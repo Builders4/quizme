@@ -24,25 +24,53 @@ app.use(express.urlencoded({ extended: true }));
 
 //General Route
 app.get('/', loadApp);
-app.get('/cards', lodcards);
+app.post('/add', addCardToDB)
+app.get('/cards', loadcards);
+app.delete('/cards/:id', deleteCard);
 
 // Route Definitions
+
+function deleteCard(req, res) {
+    let SQL = `DELETE FROM words WHERE id=$1;`
+    let val = [req.params.id];
+    client.query(SQL, val)
+        .then(() => {
+            res.redirect('/cards');
+        })
+}
+
+function loadcards(req, res) {
+    let SQL = `SELECT * FROM words;`;
+    client.query(SQL)
+        .then(data => {
+            res.render('pages/cards', { allCards: data.rows })
+        })
+
+}
+
+function addCardToDB(req, res) {
+    let SQL = `INSERT INTO words (word,definition,example,synonyms,list,img_url) VALUES ($1,$2,$3,$4,$5,$6);`
+    let safeValues = [req.body.word, req.body.definition, req.body.example, req.body.synonyms, req.body.list, req.body.img_url];
+    client.query(SQL, safeValues)
+        .then(() => {
+            res.redirect('/cards');
+        });
+}
+
 
 
 
 // Route Handlers
-function loadApp(req,res) {
+function loadApp(req, res) {
     res.status(200).render('pages/index')
 }
-function lodcards(req,res) {
-    res.status(200).render('pages/cards')
-}
+
 
 
 // To connect the client 
 // client.connect()
 //     .then(() => {
-        app.listen(PORT, () =>
-            console.log(`listening on ${PORT}`)
-        );
+app.listen(PORT, () =>
+    console.log(`listening on ${PORT}`)
+);
     // })
