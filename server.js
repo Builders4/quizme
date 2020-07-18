@@ -14,7 +14,9 @@ const PORT = process.env.PORT;
 // const client = new pg.Client(process.env.DATABASE_URL)
 app.use(methodOverride('_method'));
 app.set('view engine', 'ejs');
-app.use(express.static('./public/styles'));
+app.use(express.static('./public'));
+// app.use(express.static('./public'));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -22,6 +24,7 @@ app.use(express.urlencoded({ extended: true }));
 
 //General Route
 app.get('/', loadApp);
+app.get('/cards', lodcards);
 
 // Route Definitions
 
@@ -30,6 +33,9 @@ app.get('/', loadApp);
 // Route Handlers
 function loadApp(req,res) {
     res.status(200).render('pages/index')
+}
+function lodcards(req,res) {
+    res.status(200).render('pages/cards')
 }
 
 
