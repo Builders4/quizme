@@ -10,3 +10,4 @@ CREATE TABLE IF NOT EXISTS words (
 );
 
 INSERT INTO words (word,definition,example,synonyms,list,img_url) VALUES ('car','diff 1','exampTest','Synon','ListName','http//');
+INSERT INTO words (word,definition,example,synonyms,list,img_url) VALUES ('car','diff 1','exampTest','Synon','ListName','http//');
