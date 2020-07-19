@@ -39,23 +39,28 @@
 </header>
 
 <main>
-    <div class="flip-box flip-up">
-        <div class="object">
-            <div class="front">
-                <div class="flip-content">
-                    <h3><small><i class="fa fa-arrow-up"></i></small> Flip up</h3>
-                    <p>This Box will flip up. Hover me to see the effect.</p>
+  <%  allCards.forEach(card=>{ %>
+
+        <div class="flip-box flip-up">
+            <div class="object">
+                <div class="front">
+                    <div class="flip-content">
+                        <h3><small><i class="fa fa-arrow-up"></i></small><%= card.word%></h3>
+                        <p>This Box will flip up. Hover me to see the effect.</p>
+                    </div>
                 </div>
-            </div>
-            <div class="back">
-                <div class="flip-content">
-                    <h3>Great.</h3>
-                    <p>Flipped it up. It will flip back to the front onMouseleave.</p>
+                <div class="back">
+                    <div class="flip-content">
+                        <h3><%= card.word %></h3>
+                        <p><%= card.definition %></p>
+                        <p><%= card.example %></p>
+                        <p><%= card.synonyms %></p>
+                    </div>
                 </div>
+                <div class="flank"></div>
             </div>
-            <div class="flank"></div>
-        </div>
-    </div><!-- /.flip-box -->
+        </div><!-- /.flip-box -->
+   <% }) %>
 
 </main>
 

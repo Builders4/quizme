@@ -1,5 +1,5 @@
 <!-- Aziz -->
-<form action="/addtodatabase" method="post">
+<form action="/add" method="post">
     <%if(images){ %>
     <%images.forEach(val =>{%>
     <img src="<%=val.img_url%>" alt=""><br>
@@ -15,8 +15,8 @@
     <label for="example"><%=val.example%></label><br>
     <input type="radio" name="synonyms" id="synonyms" value="<%=val.synonyms%>">
     <label for="synonyms"><%=val.synonyms%></label><br>
-    <input type="text" name="list" placeholder="enter the list"><br>
     <% }) %>
+    <input type="text" name="list" placeholder="enter the list"><br>
     <button type="submit">Add to database</button><br>
 </form>
 <!-- Aziz -->
