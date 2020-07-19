@@ -1,6 +1,6 @@
 'use strict';
 // Load Environment Variables from the .env file
-require('dotenv').config();
+require('dotenv').config(); 
 
 // Application Dependencies
 const express = require('express');
