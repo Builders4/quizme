@@ -1,6 +1,6 @@
 'use strict';
 // Load Environment Variables from the .env file
-require('dotenv').config(); 
+require('dotenv').config();
 
 // Application Dependencies
 const express = require('express');
@@ -32,6 +32,7 @@ app.post('/searches', searchWord);
 app.get('/searches', (req, res) => {
     res.render('pages/search');
 });
+app.get('/showlist', showList);
 
 // Route Definitions
 
@@ -49,6 +50,25 @@ function loadcards(req, res) {
     client.query(SQL)
         .then(data => {
             res.render('pages/cards', { allCards: data.rows })
+        })
+
+}
+
+function showList(req, res) {
+    // let list = req.query;
+    let SQL = `SELECT DISTINCT list FROM words;`;
+
+    client.query(SQL)
+    .then(data1 => {
+        let SQL2 = `SELECT * FROM words WHERE list=$1;`;
+        // console.log(list);
+        let safe = [req.query.list];
+       return client.query(SQL2, safe)
+        .then(data2 => {
+                // console.log(list);
+                console.log(data2.rows);
+                res.render('pages/list', {listData: data1.rows,  allList: data2.rows});
+            });
         })
 
 }
@@ -84,21 +104,21 @@ function searchWord(req, res) {
     superagent.get(url)
         .then(result => {
             // console.log(result.body.meaning);
-            let newWordArr = result.body[0].meaning.noun.map(val =>{
+            let newWordArr = result.body[0].meaning.noun.map(val => {
                 let newWord = new Word(val);
                 return newWord;
             });
             superagent.get(url2)
-            .then(result2 => {
-                let imgArr = result2.body.images.map(val =>{
-                    let newImg = new Images(val);
-                    return newImg;
+                .then(result2 => {
+                    let imgArr = result2.body.images.map(val => {
+                        let newImg = new Images(val);
+                        return newImg;
+                    })
+                    // res.status(201).json(imgArr);          
+                    res.render('pages/show', { newWord: newWordArr, word: word, images: imgArr });
                 })
-                // res.status(201).json(imgArr);          
-                res.render('pages/show', { newWord: newWordArr, word:word, images:imgArr});
-            })
         })
-    }
+}
 
 
 //constructor for words
@@ -110,11 +130,11 @@ function Word(newWord) {
     // this.list = list;
 }
 //constructor for images
-function Images(img){
+function Images(img) {
     // if (img) {
-        this.img_url = img.url;
+    this.img_url = img.url;
     // }else{
-        // this.img_url = 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png';
+    // this.img_url = 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png';
     // }
 }
 
