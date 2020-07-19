@@ -1,0 +1,8 @@
+<form action="/showlist" method="get">
+    <select name="list" id="list">
+        <%listData.forEach(list=>{%>
+        <option value="<%=list.list%>"><%=list.list%></option>
+        <%})%>
+    </select>
+    <button type="submit">Select</button>
+</form>
