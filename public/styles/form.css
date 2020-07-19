@@ -1,0 +1,160 @@
+@import url("https://fonts.googleapis.com/css?family=Fjalla+One&display=swap");
+.form-section {
+    background-color: white;
+    background-size: cover;
+    height: 100vh;
+    width: 99%;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+}
+
+.form-div {
+    background: url("https://i.ibb.co/xLSccjF/imageedit-2-6024667787.jpg") center center no-repeat;
+    background-size: cover;
+    background-position-x: center;
+    background-position-y: center;
+    /* background: #e5e8f8; */
+    padding: 50px 100px;
+    border: 2px solid #004a7c;
+    box-shadow: 15px 15px 1px #004a7c, 15px 15px 1px 2px black;
+}
+
+input, textarea {
+    display: block;
+    width: 100%;
+    font-size: 14pt;
+    line-height: 28pt;
+    font-family: "Fjalla One";
+    margin-bottom: 20pt;
+    border: none;
+    border-bottom: 5px solid #004a7c;
+    /* background: #f8f4e5; */
+    min-width: 250px;
+    padding-left: 5px;
+    outline: none;
+    color: black;
+}
+
+textarea {
+    /* background-color:#f8f8f8 ; */
+}
+
+input:focus, textarea:focus {
+    border-bottom: 5px solid #ffa580;
+}
+
+.form-btn {
+    display: block;
+    font-weight: bold;
+    margin: 0 auto;
+    line-height: 28pt;
+    padding: 0 20px;
+    background: #e5ebf8;
+    letter-spacing: 2px;
+    transition: .2s all ease-in-out;
+    outline: none;
+    border: 1px solid black;
+    box-shadow: 3px 3px 1px #95a4ff, 3px 3px 1px 1px black;
+}
+
+.form-btn:hover {
+    background: #004a7c;
+    color: white;
+    border: 1px solid #004a7c;
+}
+
+/* 
+::selection {
+	background: #ffc8ff;
+} */
+
+input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus, textarea:-webkit-autofill, textarea:-webkit-autofill:hover, textarea:-webkit-autofill:focus {
+    border-bottom: 5px solid #95a4ff;
+    -webkit-text-fill-color: #2A293E;
+    -webkit-box-shadow: 0 0 0px 1000px #f8f4e5 inset;
+    transition: background-color 5000s ease-in-out 0s;
+}
+.btn-div{
+    margin: 0 auto;
+    text-align: center;
+}
+.update-btn {
+    display: inline-block;
+}
+
+.delete-btn {
+    display: inline-block;
+    margin-left: 15px;
+    background: #FF0000;
+    color: white;
+
+}
+
+.box-container{
+    position: relative;
+    padding-bottom: 25px;
+    margin-bottom: 28pt;
+
+}
+.box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.box select {
+    background-color: #004a7c;
+    color: white;
+    padding: 12px;
+    width: 300px;
+    border: none;
+    font-size: 20px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+    -webkit-appearance: button;
+    appearance: button;
+    outline: none;
+}
+
+.box::before {
+    content: "\f13a";
+    font-family: FontAwesome;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20%;
+    height: 100%;
+    text-align: center;
+    font-size: 28px;
+    line-height: 45px;
+    color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.1);
+    pointer-events: none;
+}
+
+.box:hover::before {
+    color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.box select option {
+    padding: 30px;
+}
+.suggested-imgs{
+    margin-bottom: 28pt;
+}
+.suggested-imgs img{
+width: 100px;
+border:2px solid #004a7c;
+}
+.suggested-imgs img:hover {
+    border: 2px solid #ffa580;
+}
+.suggested-imgs p{
+    font-family: "Fjalla One";
+    font-size: 20px;
+    color: #004a7c;
+    margin-bottom: 5px;
+
+}
