@@ -11,7 +11,7 @@ const methodOverride = require('method-override');
 // Application Setup
 const app = express();
 const PORT = process.env.PORT;
-// const client = new pg.Client(process.env.DATABASE_URL)
+const client = new pg.Client(process.env.DATABASE_URL)
 app.use(methodOverride('_method'));
 app.set('view engine', 'ejs');
 app.use(express.static('./public'));
@@ -68,9 +68,9 @@ function loadApp(req, res) {
 
 
 // To connect the client 
-// client.connect()
-//     .then(() => {
+client.connect()
+    .then(() => {
 app.listen(PORT, () =>
     console.log(`listening on ${PORT}`)
 );
-    // })
+    })
