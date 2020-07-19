@@ -32,6 +32,7 @@ app.post('/searches', searchWord);
 app.get('/searches', (req, res) => {
     res.render('pages/search');
 });
+app.post('showlist',showList);
 
 // Route Definitions
 
@@ -50,6 +51,11 @@ function loadcards(req, res) {
         .then(data => {
             res.render('pages/cards', { allCards: data.rows })
         })
+
+}
+
+function showList(req,res){
+
 
 }
 
