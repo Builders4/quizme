@@ -33,7 +33,7 @@ app.get('/searches', (req, res) => {
     res.render('pages/search');
 });
 app.get('/showlist', showList);
-
+app.get('/quiz',sendWords)
 // Route Definitions
 
 function deleteCard(req, res) {
@@ -81,7 +81,13 @@ function addCardToDB(req, res) {
             res.redirect('/cards');
         });
 }
-
+function sendWords(req,res) {
+    let SQL = `SELECT * FROM words;`;
+    client.query(SQL)
+        .then(data => {
+            res.render('pages/exam', { allData: data.rows })
+        })
+}
 
 
 

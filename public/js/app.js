@@ -135,11 +135,26 @@
 })();
 // end hed
 // nav 
+var x = document.getElementById("myLinks");
 function myFunction() {
-	var x = document.getElementById("myLinks");
-	if (x.style.display === "block") {
+	if (x.style.display === "inline-block") {
 	  x.style.display = "none";
 	} else {
-	  x.style.display = "block";
+	  x.style.display = "inline-block";
 	}
   }
+
+  var nav = document.querySelector('.topnav');
+  window.onscroll = function () { scrollFunction() };
+  
+  function scrollFunction() {
+	if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 10) {
+		x.style.display = "none";
+	  nav.classList = "sticky";
+	  // console.log('hiii')
+	} else {
+	  nav.classList = "topnav";
+	}
+  };
+
+

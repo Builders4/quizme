@@ -15,19 +15,19 @@
 <body>
 <header>
     <div class="topnav">
-        <a href="#" class="active">QUIZME</a>
+        <a href="#" class="active">QUIZ<span id="logospan">ME</span></a>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+          <i class="fa fa-bars"></i>
+        </a>
         <div id="myLinks">
           <a href="#">Home</a>
           <a href="#">Contact</a>
           <a href="#">About</a>
         </div>
-        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-          <i class="fa fa-bars"></i>
-        </a>
       </div>
       
     <div class="header">
-        <h1>QUIZME</h1>
+        <h1>QUIZ<span id="logospan">ME</span></h1>
         
       </div>
       <div class="canvas-wrap">
@@ -39,8 +39,10 @@
 </header>
 
 <main>
-  <%  allCards.forEach(card=>{ %>
-
+<section id="sectionCards">
+    
+    <%  allCards.forEach(card=>{ %>
+<div id="marg">
         <div class="flip-box flip-up">
             <div class="object">
                 <div class="front">
@@ -59,18 +61,11 @@
                 </div>
                 <div class="flank"></div>
             </div>
-        </div><!-- /.flip-box -->
+        </div>
+    </div>
    <% }) %>
-
+</section>
 </main>
-
-
-
-
-
-
-
-
 
 
 
