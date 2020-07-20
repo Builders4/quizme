@@ -9,22 +9,22 @@ $(function () {
     if(!$('.suggested-imgs img')[0]){
         $('.suggested-imgs').hide();
     }
-
-
-    $('#def-div select option').click(function () {
+    $('#def-div select').change(function () {
+        let def = $(this).children("option:selected").val();
         $("#textarea-def").text('');
-        if ('Suggested Definitions' != this.text) {
-            $("#textarea-def").text(this.text);
+        if ('Suggested Definitions' != def) {
+            $("#textarea-def").text(def);
         }
     });
-    $('#list-div select option').click(function () {
-        $("input[name=list").val('');
-        if ('Saved Lists' != this.text) {
-            $('input[name=list').val(this.text);
+    $('#list-div select').change(function () {
+        let listVal =$(this).children("option:selected").val();;
+        $("input[name=list]").val('');
+        if ('Saved Lists' != listVal) {
+            $('input[name=list]').val(listVal);
         }
     });
         $(".suggested-imgs img").click(function () {
-        console.log(this.attributes.src.value);
+        console.log(this);
         $("input[name=img_url]").val('');
         $("input[name=img_url]").val(this.attributes.src.value);
     });
