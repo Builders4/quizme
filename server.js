@@ -160,7 +160,7 @@ function searchWord(req, res) {
                     let imgArr = result2.body.images.map(val => {
                         let newImg = new Images(val);
                         return newImg;
-                    }).catch(error => errorHandler(error));
+                    })
                     superagent.get(url3)
                         .then(audioData => {
                             let targetAduio = audioData.body[0].hwi.prs[0].sound.audio;
@@ -175,7 +175,8 @@ function searchWord(req, res) {
                         })
                     // res.status(201).json(imgArr);          
                 })
-        }).catch(error => errorHandler(error));
+        })
+        // .catch(error => errorHandler(error));
         
 }
 //constructor for words
