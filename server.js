@@ -154,13 +154,13 @@ function searchWord(req, res) {
             let newWordArr = result.body[0].meaning.noun.map(val => {
                 let newWord = new Word(val);
                 return newWord;
-            });
+            })
            return superagent.get(url2)
                 .then(result2 => {
                     let imgArr = result2.body.images.map(val => {
                         let newImg = new Images(val);
                         return newImg;
-                    });
+                    }).catch(error => errorHandler(error));
                     superagent.get(url3)
                         .then(audioData => {
                             let targetAduio = audioData.body[0].hwi.prs[0].sound.audio;
@@ -175,7 +175,8 @@ function searchWord(req, res) {
                         })
                     // res.status(201).json(imgArr);          
                 })
-        })
+        }).catch(error => errorHandler(error));
+        
 }
 //constructor for words
 function Word(newWord) {
@@ -194,7 +195,9 @@ function Images(img) {
     // }
 }
 
-
+function errorHandler(error, request, response) {
+    response.status(404).render('pages/error');
+}
 // To connect the client 
 client.connect()
     .then(() => {
