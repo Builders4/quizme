@@ -75,8 +75,8 @@ function showList(req, res) {
 }
 
 function addCardToDB(req, res) {
-    let SQL = `INSERT INTO words (word,definition,example,synonyms,list,img_url) VALUES ($1,$2,$3,$4,$5,$6);`
-    let safeValues = [req.body.word, req.body.definition, req.body.example, req.body.synonyms, req.body.list, req.body.img_url];
+    let SQL = `INSERT INTO words (word,definition,example,synonyms,list,img_url,audio) VALUES ($1,$2,$3,$4,$5,$6,$7);`
+    let safeValues = [req.body.word, req.body.definition, req.body.example, req.body.synonyms, req.body.list, req.body.img_url, req.body.audio];
     client.query(SQL, safeValues)
         .then(() => {
             res.redirect('/cards');
@@ -105,7 +105,6 @@ function loadApp(req, res) {
 //route to handle searching for a word
 function searchWord(req, res) {
     let word = req.body.word;
-    let fstLtr=word.sl
     let key= process.env.AUDIO_API_KEY;
     let url = `https://api.dictionaryapi.dev/api/v1/entries/en/${word}`;
     let url2 = `http://www.splashbase.co/api/v1/images/search?query=${word}`;
@@ -127,7 +126,8 @@ function searchWord(req, res) {
                     .then(audioData=>{
                         let targetAduio=audioData.body[0].hwi.prs[0].sound.audio;
                         let aduioLink=`https://media.merriam-webster.com/audio/prons/en/us/mp3/${word.charAt(0)}/${targetAduio}.mp3`
-                        res.render('pages/show', { newWord: newWordArr, word: word, images: imgArr,aduio: aduioLink});
+                        console.log(aduioLink);
+                        res.render('pages/new', { newWord: newWordArr, word: word, images: imgArr,audio: aduioLink});
                     })
                     // res.status(201).json(imgArr);          
                 })
