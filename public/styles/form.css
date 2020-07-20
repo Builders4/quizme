@@ -24,7 +24,7 @@ input, textarea {
     display: block;
     width: 100%;
     font-size: 14pt;
-    line-height: 28pt;
+    line-height: 20pt;
     font-family: "Fjalla One";
     margin-bottom: 20pt;
     border: none;
@@ -146,6 +146,7 @@ input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:foc
 }
 .suggested-imgs img{
 width: 100px;
+height: 100px;
 border:2px solid #004a7c;
 }
 .suggested-imgs img:hover {
