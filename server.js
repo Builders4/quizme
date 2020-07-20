@@ -93,18 +93,16 @@ function showList(req, res) {
     let SQL = `SELECT DISTINCT list FROM words;`;
 
     client.query(SQL)
-    .then(data1 => {
-        let SQL2 = `SELECT * FROM words WHERE list=$1;`;
-        // console.log(list);
-        let safe = [req.query.list];
-        client.query(SQL2, safe)
-        .then(data2 => {
-                // console.log(list);
-                console.log(data2.rows);
-                res.render('pages/list', {listData: data1.rows,  allList: data2.rows});
-                console.log(data1.rows);
-                console.log(data2.rows);
-            });
+        .then(data1 => {
+            let SQL2 = `SELECT * FROM words WHERE list=$1;`;
+            // console.log(list);
+            let safe = [req.query.list];
+            return client.query(SQL2, safe)
+                .then(data2 => {
+                    // console.log(list);
+                    console.log(data2.rows);
+                    res.render('pages/list', { listData: data1.rows, allList: data2.rows });
+                });
         })
 
 }
@@ -117,7 +115,7 @@ function addCardToDB(req, res) {
             res.redirect('/cards');
         });
 }
-function sendWords(req,res) {
+function sendWords(req, res) {
     let SQL = `SELECT * FROM words;`;
     client.query(SQL)
         .then(data => {
@@ -138,10 +136,13 @@ function loadApp(req, res) {
 //route to handle searching for a word
 function searchWord(req, res) {
     let word = req.body.word;
-    let key= process.env.AUDIO_API_KEY;
+    let key = process.env.AUDIO_API_KEY;
     let url = `https://api.dictionaryapi.dev/api/v1/entries/en/${word}`;
     let url2 = `http://www.splashbase.co/api/v1/images/search?query=${word}`;
-    let url3=`https://www.dictionaryapi.com/api/v3/references/collegiate/json/${word}?key=${key}`
+    let url3 = `https://www.dictionaryapi.com/api/v3/references/collegiate/json/${word}?key=${key}`
+
+
+
     superagent.get(url)
         .then(result => {
             // console.log(result.body.meaning);
@@ -156,18 +157,21 @@ function searchWord(req, res) {
                         return newImg;
                     });
                     superagent.get(url3)
-                    .then(audioData=>{
-                        let targetAduio=audioData.body[0].hwi.prs[0].sound.audio;
-                        let aduioLink=`https://media.merriam-webster.com/audio/prons/en/us/mp3/${word.charAt(0)}/${targetAduio}.mp3`
-                        console.log(aduioLink);
-                        res.render('pages/new', { newWord: newWordArr, word: word, images: imgArr,audio: aduioLink});
-                    })
+                        .then(audioData => {
+                            let targetAduio = audioData.body[0].hwi.prs[0].sound.audio;
+                            let aduioLink = `https://media.merriam-webster.com/audio/prons/en/us/mp3/${word.charAt(0)}/${targetAduio}.mp3`
+
+                            let SQL = `SELECT DISTINCT list FROM words;`;
+                            client.query(SQL)
+                                .then(data => {
+                                    console.log(data.rows);
+                                    res.render('pages/new', { newWord: newWordArr, word: word, images: imgArr, audio: aduioLink, list: data.rows });
+                                })
+                        })
                     // res.status(201).json(imgArr);          
                 })
         })
 }
-
-
 //constructor for words
 function Word(newWord) {
     this.word = newWord.word;
