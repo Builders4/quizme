@@ -20,27 +20,18 @@
         <section class="form-section">
             <div class="form-div ">
                 <form action="/add" method="post">
-                    <label for="">
-                        <span>Word</span>
-                        <input placeholder="Word" type="text" value="<%=word%>" name="word" required="">
-                    </label>
-                    <label for="">
-                        <span>Pronunciation</span>
-                        <input placeholder="audio" type="hidden" value="<%=audio%>" name="audio" required="">
-                        <div>
-                            <audio controls>
-                                <source src="<%=audio%>" type="audio/mpeg">
-                            </audio>
-                        </div>
-                    </label>
-                    <label for="">
-                        <span>Definition</span>
-                        <textarea id="textarea-def" placeholder="Definition" type="text" name="definition" required=""
-                            cols="30" rows="2"></textarea>
-                    </label>
+                    <input placeholder="Word" type="text" value="<%=word%>" name="word" required="">
+                    <div>
+                        <audio controls>
+                            <source src="<%=audio%>" type="audio/mpeg">
+                          </audio>
+                      
+                    </div>
+                    <textarea placeholder="Definition" type="text" name="definition" required="" cols="30"
+                        rows="2"></textarea>
                     <div class="box-container" id="def-div">
                         <div class="box">
-                            <select >
+                            <select>
                                 <option>Suggested Definitions</option>
                                 <% newWord.forEach(val =>{ %>
                                 <option><%=val.definition%></option>
@@ -48,48 +39,37 @@
                             </select>
                         </div>
                     </div>
-                    <label for="">
-                        <span>Example</span>
-                        <textarea placeholder="Example" type="text" name="example" required="" cols="30"
-                            rows="2"><%=newWord[0].example %></textarea>
-                    </label>
-                    <label for="">
-                        <span>Synonyms</span>
-                        <textarea placeholder="Synonyms" type="text" name="synonyms" required="" cols="30"
-                            rows="2"><%=newWord[0].synonyms%></textarea>
-                    </label>
 
-                    <label for="">
-                        <span>List</span>
+                    <textarea placeholder="Example" type="text" name="example" required="" cols="30"
+                    rows="2"><%=newWord[0].example %></textarea>
+                    <textarea placeholder="Synonyms" type="text" name="synonyms" required="" cols="30"
+                        rows="2"><%=newWord[0].synonyms%></textarea>
+
                     <input placeholder="List Name" type="text" name="list" required="">
-                    </label>
                     <div class="box-container" id="list-div">
                         <div class="box">
                             <select>
                                 <option>Saved Lists</option>
                                 <% list.forEach(val =>{ %>
-                                <option><%=val.list%></option>
-                                <% }) %>
-                            </select>
+                                    <option><%=val.list%></option>
+                                    <% }) %>
+                                </select>
                         </div>
                     </div>
-                    <label for="">
-                        <span>Image Url</span>
-                    <input placeholder="Image Url" type="url" name="img_url" value="" required="">
-                    </label>
+                    <input placeholder="image Url" type="url" name="img_url" value="" required="">
                     <div class="suggested-imgs">
                         <p>Suggested Images</p>
                         <%images.forEach((val,indx) =>{%>
                         <%if(3>indx){%>
                         <img src="<%=val.img_url%>" alt="">
                         <%}%>
-                 <%})%>
+                <%})%>
                     </div>
                     <button button class='form-btn' type="submit">ADD WORD</button>
                 </form>
             </div>
         </section>
-
+                                   
     </main>
     <footer>
         <%- include ('layout/footer.ejs') %>
