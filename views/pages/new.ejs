@@ -21,13 +21,13 @@
             <div class="form-div ">
                 <form action="/add" method="post">
                     <input placeholder="Word" type="text" value="<%=word%>" name="word" required="">
+                    <input placeholder="audio" type="hidden" value="<%=audio%>" name="audio" required="">
                     <div>
                         <audio controls>
                             <source src="<%=audio%>" type="audio/mpeg">
-                          </audio>
-                      
+                        </audio>
                     </div>
-                    <textarea placeholder="Definition" type="text" name="definition" required="" cols="30"
+                    <textarea id="textarea-def" placeholder="Definition" type="text" name="definition" required="" cols="30"
                         rows="2"></textarea>
                     <div class="box-container" id="def-div">
                         <div class="box">
@@ -41,7 +41,7 @@
                     </div>
 
                     <textarea placeholder="Example" type="text" name="example" required="" cols="30"
-                    rows="2"><%=newWord[0].example %></textarea>
+                        rows="2"><%=newWord[0].example %></textarea>
                     <textarea placeholder="Synonyms" type="text" name="synonyms" required="" cols="30"
                         rows="2"><%=newWord[0].synonyms%></textarea>
 
@@ -51,9 +51,9 @@
                             <select>
                                 <option>Saved Lists</option>
                                 <% list.forEach(val =>{ %>
-                                    <option><%=val.list%></option>
-                                    <% }) %>
-                                </select>
+                                <option><%=val.list%></option>
+                                <% }) %>
+                            </select>
                         </div>
                     </div>
                     <input placeholder="image Url" type="url" name="img_url" value="" required="">
@@ -63,13 +63,13 @@
                         <%if(3>indx){%>
                         <img src="<%=val.img_url%>" alt="">
                         <%}%>
-                <%})%>
+                 <%})%>
                     </div>
                     <button button class='form-btn' type="submit">ADD WORD</button>
                 </form>
             </div>
         </section>
-                                   
+
     </main>
     <footer>
         <%- include ('layout/footer.ejs') %>
