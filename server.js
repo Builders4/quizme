@@ -45,6 +45,7 @@ function deleteCard(req, res) {
         })
 }
 
+
 function loadcards(req, res) {
     let SQL = `SELECT * FROM words;`;
     client.query(SQL)
@@ -104,9 +105,11 @@ function loadApp(req, res) {
 //route to handle searching for a word
 function searchWord(req, res) {
     let word = req.body.word;
+    let fstLtr=word.sl
+    let key= process.env.AUDIO_API_KEY;
     let url = `https://api.dictionaryapi.dev/api/v1/entries/en/${word}`;
     let url2 = `http://www.splashbase.co/api/v1/images/search?query=${word}`;
-
+    let url3=`https://www.dictionaryapi.com/api/v3/references/collegiate/json/${word}?key=${key}`
     superagent.get(url)
         .then(result => {
             // console.log(result.body.meaning);
@@ -119,9 +122,14 @@ function searchWord(req, res) {
                     let imgArr = result2.body.images.map(val => {
                         let newImg = new Images(val);
                         return newImg;
+                    });
+                    superagent.get(url3)
+                    .then(audioData=>{
+                        let targetAduio=audioData.body[0].hwi.prs[0].sound.audio;
+                        let aduioLink=`https://media.merriam-webster.com/audio/prons/en/us/mp3/${word.charAt(0)}/${targetAduio}.mp3`
+                        res.render('pages/show', { newWord: newWordArr, word: word, images: imgArr,aduio: aduioLink});
                     })
                     // res.status(201).json(imgArr);          
-                    res.render('pages/show', { newWord: newWordArr, word: word, images: imgArr });
                 })
         })
 }
