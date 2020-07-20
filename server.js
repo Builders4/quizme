@@ -33,8 +33,41 @@ app.get('/searches', (req, res) => {
     res.render('pages/search');
 });
 app.get('/showlist', showList);
-app.get('/quiz', sendWords)
+app.get('/quiz',sendWords)
+app.get('/deletUpdateForm/:id',formEdit);
+app.put('/updateWord/:id', updateWord);
+app.delete('/deleteWord/:id', deletWord);
 // Route Definitions
+
+function deletWord(req,res){
+    let SQL = `DELETE FROM words WHERE id=$1;`;
+    let values = [req.params.id];
+    client.query(SQL,values)
+        .then(()=>{
+            res.redirect('/');
+        });
+}
+
+function updateWord(req,res){
+    let {word,definition,example,synonyms,list,img_url,audio} = req.body;
+    let SQL = `UPDATE books SET word=$1,definition=$2,example=$3,synonyms=$4,list=$5,audio=$6 WHERE id =$7`
+    let id = req.params.id;
+    let values = [word,definition,example,synonyms,list,img_url,audio,id];
+    client.query(SQL,values)
+        .then(()=>{
+            res.redirect('/');
+        });
+}
+
+function formEdit(req,res){
+    let id = req.params.id;
+    let SQL = `SELECT * FROM words WHERE id=$1;`;
+    let safe = [id];
+    client.query(SQL,safe)
+        .then(data =>{
+            res.render('pages/show',{wordToEdit: data});
+        })
+}
 
 function deleteCard(req, res) {
     let SQL = `DELETE FROM words WHERE id=$1;`
@@ -100,8 +133,6 @@ function loadApp(req, res) {
 }
 
 
-
-
 //route to handle searching for a word
 function searchWord(req, res) {
     let word = req.body.word;
@@ -119,7 +150,7 @@ function searchWord(req, res) {
                 let newWord = new Word(val);
                 return newWord;
             });
-            superagent.get(url2)
+           return superagent.get(url2)
                 .then(result2 => {
                     let imgArr = result2.body.images.map(val => {
                         let newImg = new Images(val);
