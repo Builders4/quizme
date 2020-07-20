@@ -15,7 +15,10 @@ $(function () {
         $("#textarea-def").text('');
         if ('Suggested Definitions' != this.text) {
             $("#textarea-def").text(this.text);
+            console.log('test1');
         }
+        console.log('test2');
+        console.log(this);
     });
     $('#list-div select option').click(function () {
         $("input[name=list").val('');

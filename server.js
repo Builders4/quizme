@@ -44,7 +44,7 @@ function deletWord(req,res){
     let values = [req.params.id];
     client.query(SQL,values)
         .then(()=>{
-            res.redirect('/');
+            res.redirect('/showlist');
         });
 }
 
@@ -55,7 +55,7 @@ function updateWord(req,res){
     let values = [word,definition,example,synonyms,list,img_url,audio,id];
     client.query(SQL,values)
         .then(()=>{
-            res.redirect('/');
+            res.redirect('/showlist');
         });
 }
 
@@ -115,7 +115,7 @@ function addCardToDB(req, res) {
     let safeValues = [req.body.word, req.body.definition, req.body.example, req.body.synonyms, req.body.list, req.body.img_url, req.body.audio];
     client.query(SQL, safeValues)
         .then(() => {
-            res.redirect('/list');
+            res.redirect('/showlist');
         });
 }
 function sendWords(req, res) {
