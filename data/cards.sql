@@ -11,4 +11,4 @@ CREATE TABLE IF NOT EXISTS words (
 );
 
 INSERT INTO words (word,definition,example,synonyms,list,img_url,audio) VALUES ('car','diff 1','exampTest','Synon','ListName','http//','http//');
-INSERT INTO words (word,definition,example,synonyms,list,img_url,audio) VALUES ('car','diff 1','exampTest','Synon','ListName','http//','http//');
+INSERT INTO words (word,definition,example,synonyms,list,img_url,audio) VALUES ('car','diff 1','exampTest','Synon','ListName2','http//','http//');
