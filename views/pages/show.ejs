@@ -1,68 +1,49 @@
-<!-- Aziz -->
-<!-- <form action="/add" method="post">
-    <%if(images){ %>
-    <%images.forEach(val =>{%>
-    <img src="<%=val.img_url%>" alt=""><br>
-    <%})%>
-    <%}else{%>
-    <img src="https://pngimage.net/wp-content/uploads/2018/06/no-image-available-png-3.png" alt="">;
-    <%}%>
-    <input type="text" name="<%=word%>" value="<%=word%>"><br>
-    <% newWord.forEach(val =>{ %> <% }) %>
-    <input type="radio" name="definition" id="definition" value="<%=val.definition%>">
-    <label for="definition"><%=val.definition%></label><br>
-    <input type="radio" name="example" id="example" value="<%=val.example%>">
-    <label for="example"><%=val.example%></label><br>
-    <input type="radio" name="synonyms" id="synonyms" value="<%=val.synonyms%>">
-    <label for="synonyms"><%=val.synonyms%></label><br>
-    <% }) %>
-    <input type="text" name="list" placeholder="enter the list"><br>
-    <button type="submit">Add to database</button><br>
-</form> -->
-<!-- Aziz -->
-
-
-
 <!-- PLEASE LINK IT WITH YOUR BACKEND AND CHECK THE NAMES -->
 <section class="form-section">
     <div class="form-div ">
-        <form action=""></form>
-        <input placeholder="Word" type="text" name="word" required="">
-        <textarea placeholder="Definition" type="text" name="definition" required="" cols="30" rows="4"></textarea>
-        <div class="box-container" id="def-div">
-            <div class="box">
-                <select>
-                    <option>Suggested Definitions</option>
-                    <option>Option 2</option>
-                    <option>Option 3</option>
-                    <option>Option 4</option>
-                    <option>Option 5</option>
-                </select>
-            </div>
-        </div>
-        <input placeholder="List Name" type="text" name="list" required="">
-        <div class="box-container" id="list-div">
-            <div class="box">
-                <select>
-                    <option>Saved Lists</option>
-                    <option>List 1</option>
-                    <option>List 2</option>
-                    <option>List 3</option>
-                    <option>List 4</option>
-                </select>
-            </div>
-        </div>
+        <form action="/updateWord/<%=val.id%>?_method=put" method="post">
+            <% wordToEdit.forEach(val =>{ %>
+            <input placeholder="Word" type="text" name="word" required="" value="<%=val.word%>">
+            <textarea placeholder="Definition" type="text" name="definition" required="" cols="30" rows="4"></textarea>
+            <div class="box-container" id="def-div">
 
-        <input placeholder="image Url" type="url" name="img_url" value="" required="">
-        <div class="suggested-imgs">
-            <p class="suggested-imgs-p">Suggested Images</p>
-            <img src="images/test-img.jpg" alt="">
-            <img src="images/test-img.jpg" alt="">
-            <img src="images/test-img.jpg" alt="">
-        </div>
-        <div class="btn-div">
-            <button class="form-btn update-btn" type="submit">UPDATE</button>
-            <a href=""><button class="delete-btn form-btn" >DELETE</button></a>
-        </div>
+                <div class="box">
+                    <select>
+                        <option>Suggested Definitions</option>
+                        <option><%=val.definition%></option>
+                        <option>Option 3</option>
+                        <option>Option 4</option>
+                        <option>Option 5</option>
+                    </select>
+                </div>
+            </div>
+            <input placeholder="List Name" type="text" name="list" required="">
+            <div class="box-container" id="list-div">
+                <div class="box">
+                    <select>
+                        <option>Saved Lists</option>
+                        <option><%=val.list%></option>
+                        <option>List 2</option>
+                        <option>List 3</option>
+                        <option>List 4</option>
+                    </select>
+                </div>
+            </div>
+
+            <input placeholder="image Url" type="url" name="img_url" value="" required="">
+            <div class="suggested-imgs">
+                <p class="suggested-imgs-p">Suggested Images</p>
+                <img src="<%=val.img_url%>" alt="">
+                <img src="images/test-img.jpg" alt="">
+                <img src="images/test-img.jpg" alt="">
+            </div>
+            <div class="btn-div">
+                <button class="form-btn update-btn" type="submit">UPDATE</button>
+            </div>
+        </form>
+        <form action="/deleteWord/<%= val.id %>?_method=delete" method="post">
+            <button class="delete-btn form-btn">DELETE</button>
+        </form>
+        <% }) %>
     </div>
 </section>
