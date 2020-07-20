@@ -6,8 +6,9 @@ CREATE TABLE IF NOT EXISTS words (
     example VARCHAR(255),
     synonyms VARCHAR(255),
     list VARCHAR(255),
-    img_url TEXT
+    img_url TEXT,
+    audio TEXT
 );
 
-INSERT INTO words (word,definition,example,synonyms,list,img_url) VALUES ('car','diff 1','exampTest','Synon','ListName','http//');
-INSERT INTO words (word,definition,example,synonyms,list,img_url) VALUES ('car','diff 1','exampTest','Synon','ListName','http//');
+INSERT INTO words (word,definition,example,synonyms,list,img_url,audio) VALUES ('car','diff 1','exampTest','Synon','ListName','http//','http//');
+INSERT INTO words (word,definition,example,synonyms,list,img_url,audio) VALUES ('car','diff 1','exampTest','Synon','ListName','http//','http//');
