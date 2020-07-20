@@ -25,7 +25,7 @@ app.use(express.urlencoded({ extended: true }));
 //General Route
 app.get('/', loadApp);
 app.post('/add', addCardToDB)
-app.get('/cards', loadcards);
+app.get('/goToCards/:list', loadcards);
 app.delete('/cards/:id', deleteCard);
 //rout to search for a word dif
 app.post('/searches', searchWord);
@@ -33,7 +33,7 @@ app.get('/searches', (req, res) => {
     res.render('pages/search');
 });
 app.get('/showlist', showList);
-app.get('/quiz',sendWords)
+app.get('/goToQuiz/:list',sendWords);
 app.get('/deletUpdateForm/:id',formEdit);
 app.put('/updateWord/:id', updateWord);
 app.delete('/deleteWord/:id', deletWord);
@@ -80,10 +80,12 @@ function deleteCard(req, res) {
 
 
 function loadcards(req, res) {
-    let SQL = `SELECT * FROM words;`;
-    client.query(SQL)
+    let list = req.params.list;
+    let SQL = `SELECT * FROM words WHERE list=$1;`;
+    let safe = [list];
+    client.query(SQL,safe)
         .then(data => {
-            res.render('pages/cards', { allCards: data.rows })
+            res.render('pages/cards', { allCards: data.rows, listName: list});
         })
 
 }
@@ -94,14 +96,15 @@ function showList(req, res) {
 
     client.query(SQL)
         .then(data1 => {
+            let list = req.query.list;
             let SQL2 = `SELECT * FROM words WHERE list=$1;`;
             // console.log(list);
-            let safe = [req.query.list];
+            let safe = [list];
             return client.query(SQL2, safe)
                 .then(data2 => {
                     // console.log(list);
                     console.log(data2.rows);
-                    res.render('pages/list', { listData: data1.rows, allList: data2.rows });
+                    res.render('pages/list', { listData: data1.rows, allList: data2.rows, list: list});
                 });
         })
 
@@ -112,14 +115,16 @@ function addCardToDB(req, res) {
     let safeValues = [req.body.word, req.body.definition, req.body.example, req.body.synonyms, req.body.list, req.body.img_url, req.body.audio];
     client.query(SQL, safeValues)
         .then(() => {
-            res.redirect('/cards');
+            res.redirect('/list');
         });
 }
 function sendWords(req, res) {
-    let SQL = `SELECT * FROM words;`;
-    client.query(SQL)
+    let list = req.params.list;
+    let SQL = `SELECT * FROM words WHERE list=$1;`;
+    let safe = [list];
+    client.query(SQL,safe)
         .then(data => {
-            res.render('pages/exam', { allData: data.rows })
+            res.render('pages/exam', { allData: data.rows, listName: list});
         })
 }
 
@@ -139,7 +144,7 @@ function searchWord(req, res) {
     let key = process.env.AUDIO_API_KEY;
     let url = `https://api.dictionaryapi.dev/api/v1/entries/en/${word}`;
     let url2 = `http://www.splashbase.co/api/v1/images/search?query=${word}`;
-    let url3 = `https://www.dictionaryapi.com/api/v3/references/collegiate/json/${word}?key=${key}`
+    let url3 = `https://www.dictionaryapi.com/api/v3/references/collegiate/json/${word}?key=${key}`;
 
 
 
