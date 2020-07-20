@@ -50,7 +50,7 @@ function deletWord(req,res){
 
 function updateWord(req,res){
     let {word,definition,example,synonyms,list,img_url,audio} = req.body;
-    let SQL = `UPDATE books SET word=$1,definition=$2,example=$3,synonyms=$4,list=$5,audio=$6 WHERE id =$7`
+    let SQL = `UPDATE words SET word=$1,definition=$2,example=$3,synonyms=$4,list=$5,img_url=$6,audio=$7 WHERE id =$8`
     let id = req.params.id;
     let values = [word,definition,example,synonyms,list,img_url,audio,id];
     client.query(SQL,values)
@@ -65,7 +65,7 @@ function formEdit(req,res){
     let safe = [id];
     client.query(SQL,safe)
         .then(data =>{
-            res.render('pages/show',{wordToEdit: data});
+            res.render('pages/show',{wordToEdit: data.rows});
         })
 }
 
