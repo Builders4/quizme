@@ -63,11 +63,11 @@ function showList(req, res) {
         let SQL2 = `SELECT * FROM words WHERE list=$1;`;
         // console.log(list);
         let safe = [req.query.list];
-       return client.query(SQL2, safe)
+        client.query(SQL2, safe)
         .then(data2 => {
                 // console.log(list);
                 console.log(data2.rows);
-                res.render('pages/list', {listData: data1.rows,  allList: data2.rows});
+                res.redirect('pages/list', {listData: data1.rows,  allList: data2.rows});
             });
         })
 
@@ -99,14 +99,12 @@ function loadApp(req, res) {
 }
 
 
-
-
 //route to handle searching for a word
 function searchWord(req, res) {
     let word = req.body.word;
     let url = `https://api.dictionaryapi.dev/api/v1/entries/en/${word}`;
     let url2 = `http://www.splashbase.co/api/v1/images/search?query=${word}`;
-
+    // console.log(word);
     superagent.get(url)
         .then(result => {
             // console.log(result.body.meaning);
@@ -114,14 +112,17 @@ function searchWord(req, res) {
                 let newWord = new Word(val);
                 return newWord;
             });
-            superagent.get(url2)
+           return superagent.get(url2)
                 .then(result2 => {
                     let imgArr = result2.body.images.map(val => {
                         let newImg = new Images(val);
                         return newImg;
                     })
                     // res.status(201).json(imgArr);          
-                    res.render('pages/show', { newWord: newWordArr, word: word, images: imgArr });
+                    res.render('pages/new', { newWord: newWordArr, word: word, images: imgArr });
+                    console.log(newWordArr);
+                    console.log(word);
+                    console.log(imgArr);
                 })
         })
 }

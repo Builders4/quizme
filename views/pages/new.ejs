@@ -1,8 +1,9 @@
+
 <!-- PLEASE LINK IT WITH YOUR BACKEND AND CHECK THE NAMES -->
-<section class="form-section" >
+ <section class="form-section" >
     <div class="form-div ">
-        <form action="" method="post"></form>
-        <input placeholder="Word" type="text" name="word" required="">
+        <form action="/searches" method="post">
+        <input placeholder="Word" type="text" name="<%=word%>" required value="<%=word%>" >
         <textarea placeholder="Definition" type="text" name="definition" required="" cols="30" rows="4"></textarea>
         <div class="box-container" id="def-div">
             <div class="box">
@@ -23,7 +24,7 @@
                 </select>
             </div>
         </div>
-        <input placeholder="image Url" type="url" name="img_url" value="" required="">
+        <input placeholder="image Url" type="url" name="img_url" value="" required>
         <div class="suggested-imgs">
             <p>Suggested Images</p>
             <%images.forEach((val,indx) =>{%>
@@ -33,5 +34,6 @@
                 <%})%>
         </div>
         <button button class='form-btn' type="submit">ADD WORD</button>
+    </form>
     </div>
-</section> 
+</section>
