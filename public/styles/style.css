@@ -156,11 +156,13 @@ canvas {
     font-size: 2rem;
     text-align: center;
     font-family: 'Boogaloo', cursive ;
-    margin-top: 40px;
-    margin-bottom: 150px;
-    
+    width: 70%;
+    margin: 120px auto;
+    /* margin-top: 40px; */
+    /* margin-bottom: 150px; */
+
 }
-main {
+#secand-section{
   width: 70%;
   margin: auto auto;
 }
@@ -200,6 +202,11 @@ main {
 
 
 /* 3ed section */
+
+#third-section{
+  width: 70%;
+  margin: auto auto;
+}
 #third-section{
 margin-top: 140px;
 }
@@ -256,6 +263,74 @@ margin-top: 140px;
 }
 
 
+
+
+
+/* section#4 */
+#forth-section{
+  
+  width: 95%;
+  margin: 100px auto;
+}
+/* end first-section */
+#inforth-section{
+  display: flex;
+  margin: auto auto;
+}
+#inforth-sectiondiv-2{
+    width: 50%;
+    background-color: #e8f1f5;
+    padding-top: 160px;
+    padding-left: 55px;
+}
+
+#inforth-sectiondiv-2 h2{
+  font-size: 41px;
+  color:#455358;
+  font-weight: 600;
+
+}
+#inforth-sectiondiv-2 p{
+  font-size: 23px;
+  color:#455358;
+  padding: 20px 0px;
+  font-weight: 100;
+  font-weight: lighter;
+}
+
+#inforth-section img{
+  width: 50%;
+  /* height:  480px; */
+  
+}
+
+
+/* end 4sec */
+/* Btn section */
+#forbtnsec{
+  text-align: center;
+}
+#forbtnsec h2{
+  font-size: 41px;
+  color:#455358;
+  font-weight: 600;
+  margin-bottom: 40px;
+
+}
+.homebtn{
+  background-color: #3ccfcf;
+  padding: 30px 40px ;
+  border: 0px ;
+  font-size: 20px;
+  border-radius:10px ;
+  color:#fafafa;
+}
+#forbtnsec .homebtn:hover{
+  color:#455358;
+  
+  background-color: gold;
+}
+/* end btn */
 /* Footer left */
 
 .footer-distributed .footer-left{
