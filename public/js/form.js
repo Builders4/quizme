@@ -12,9 +12,9 @@ $(function () {
 
 
     $('#def-div select option').click(function () {
-        $("textarea").text('');
+        $("#textarea-def").text('');
         if ('Suggested Definitions' != this.text) {
-            $("textarea").text(this.text);
+            $("#textarea-def").text(this.text);
         }
     });
     $('#list-div select option').click(function () {
