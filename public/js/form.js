@@ -1,3 +1,4 @@
+console.log('here>>>>>>>>>>>');
 $(function () {
     if($('#list-div select')[0].children.length === 1){
         $('#list-div').hide();

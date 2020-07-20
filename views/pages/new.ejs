@@ -1,39 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
 
-<!-- PLEASE LINK IT WITH YOUR BACKEND AND CHECK THE NAMES -->
- <section class="form-section" >
-    <div class="form-div ">
-        <form action="/searches" method="post">
-        <input placeholder="Word" type="text" name="<%=word%>" required value="<%=word%>" >
-        <textarea placeholder="Definition" type="text" name="definition" required="" cols="30" rows="4"></textarea>
-        <div class="box-container" id="def-div">
-            <div class="box">
-                <select>
-                    <option>Suggested Definitions</option>
-                    <% newWord.forEach(val =>{ %>
-                    <option><%=val.definition%></option>
-                    <% }) %>
-                </select>
-            </div>
-        </div>
-        <input  placeholder="List Name" type="text" name="list" required="">
-        <div class="box-container" id="list-div">
-            <div class="box">
-                <select>
-                    <option>Saved Lists</option>
-                        <!-- add your list loop here -->
-                </select>
-            </div>
-        </div>
-        <input placeholder="image Url" type="url" name="img_url" value="" required>
-        <div class="suggested-imgs">
-            <p>Suggested Images</p>
-            <%images.forEach((val,indx) =>{%>
-                <%if(3>indx){%>
-                <img src="<%=val.img_url%>" alt="">
-                <%}%>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/reset.css">
+    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="stylesheet" href="/styles/table.css">
+    <link rel="stylesheet" href="/styles/form.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>new card</title>
+</head>
+
+<body>
+    <header>
+
+    </header>
+    <main>
+        <section class="form-section">
+            <div class="form-div ">
+                <form action="/add" method="post">
+                    <input placeholder="Word" type="text" name="word" required="">
+                    <div>
+                        <audio controls>
+                            <source src="<%=audio%>" type="audio/mpeg">
+                          </audio>
+                      
+                    </div>
+                    <textarea placeholder="Definition" type="text" name="definition" required="" cols="30"
+                        rows="4"></textarea>
+                    <div class="box-container" id="def-div">
+                        <div class="box">
+                            <select>
+                                <option>Suggested Definitions</option>
+                                <% newWord.forEach(val =>{ %>
+                                <option><%=val.definition%></option>
+                                <% }) %>
+                            </select>
+                        </div>
+                    </div>
+                    <input placeholder="List Name" type="text" name="list" required="">
+                    <div class="box-container" id="list-div">
+                        <div class="box">
+                            <select>
+                                <option>Saved Lists</option>
+                                <!-- add your list loop here -->
+                            </select>
+                        </div>
+                    </div>
+                    <input placeholder="image Url" type="url" name="img_url" value="" required="">
+                    <div class="suggested-imgs">
+                        <p>Suggested Images</p>
+                        <%images.forEach((val,indx) =>{%>
+                        <%if(3>indx){%>
+                        <img src="<%=val.img_url%>" alt="">
+                        <%}%>
                 <%})%>
-        </div>
-        <button button class='form-btn' type="submit">ADD WORD</button>
-    </form>
-    </div>
-</section>
+                    </div>
+                    <button button class='form-btn' type="submit">ADD WORD</button>
+                </form>
+            </div>
+        </section>
+                                   
+    </main>
+    <footer>
+
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="js/form.js"></script>
+    <!-- <script src="js/app.js"></script> -->
+</body>
+
+</html>
