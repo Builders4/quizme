@@ -1,24 +1,23 @@
 
+$('.fa').on("click", function () {
+    console.log(this.attributes[0].nodeValue);
+    let audio = new Audio(this.attributes[0].nodeValue);
+    if ($(this).hasClass('fa-play')) {
+        $(this).removeClass('fa-play');
+        $(this).addClass('fa-pause');
+        audio.play()
 
-$('.fa').on("click",function(){
-    console.log(this);
-    let audio = new Audio(this.attr('src'));
 
-  if($(this).hasClass('fa-play'))
-   {
-     $(this).removeClass('fa-play');
-     $(this).addClass('fa-pause');
-     audio.play();
-   }
-  else
-   {
-     $(this).removeClass('fa-pause');
-     $(this).addClass('fa-play');
-     audio.pause();
-   }
+    }
+    else {
+        $(this).removeClass('fa-pause');
+        $(this).addClass('fa-play');
+        audio.pause();
+    }
+    setTimeout(() => {
+        $(this).removeClass('fa-pause');
+        $(this).addClass('fa-play');
+    }, 500);
+
 });
 
-audio.onended = function() {
-     $("this").removeClass('fa-pause');
-     $("this").addClass('fa-play');
-};

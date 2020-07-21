@@ -1,27 +1,24 @@
-
-
 table {
-    width: 90%;
-    margin: auto auto;
-    margin-top: 100px;
-    background-color: #E8F1F5;
-    text-align: center;
-    table-layout:fixed;
-    box-shadow: 5px 14px 20px 5px #888888;
-}
-tr{
-    vertical-align: middle !important; 
-       
-}
-td{
-    vertical-align: middle !important;   
-    
-
+  width: 90%;
+  margin: auto auto;
+  margin-top: 100px;
+  background-color: #E8F1F5;
+  text-align: center;
+  table-layout: fixed;
+  box-shadow: 5px 14px 20px 5px #888888;
 }
 
-table audio{
-    max-width: 99%;
-    direction: ltr;
+tr {
+  vertical-align: middle !important;
+}
+
+td {
+  vertical-align: middle !important;
+}
+
+table audio {
+  max-width: 99%;
+  direction: ltr;
   /* Prevent unwanted style inheritance. See bug 554717. */
   text-align: left;
   list-style-image: none !important;
@@ -29,114 +26,118 @@ table audio{
   text-decoration: none !important;
   white-space: normal !important;
   /* background-image: url('http://dev.steelehouse.com/codepen/audio-shadow.jpg'); */
+}
 
+table img {
+  width: 100%;
+  height: 50px;
 }
-table img{
-    width: 90px;
-    height: 90px;
+
+table th:first-of-type {
+  border-radius: 6px 0 0 0;
 }
-table th:first-of-type{
-    border-radius: 6px 0 0 0;
+
+table th:last-of-type {
+  border-radius: 0 6px 0 0;
 }
-table th:last-of-type{
-    border-radius: 0 6px 0 0;
-}
-table th:nth-of-type(1),table th:nth-of-type(3){
+
+table th:nth-of-type(1), table th:nth-of-type(3),table th:nth-of-type(9) {
   width: 5%;
 }
 
-table th:nth-of-type(2),table th:nth-of-type(3){
+table th:nth-of-type(2), table th:nth-of-type(3) {
   width: 5%;
 }
 
-table th:nth-of-type(4),table th:nth-of-type(3){
-    width: 20%;
-  }
-  
-table th:nth-of-type(6),table th:nth-of-type(3){
+table th:nth-of-type(4), table th:nth-of-type(3) {
+  width: 20%;
+}
+
+table th:nth-of-type(6), table th:nth-of-type(3) {
   width: 10%;
 }
 
-table th:nth-of-type(7),table th:nth-of-type(3){
-    width: 15%;
-  }
-  
-table th:nth-of-type(8),table th:nth-of-type(3){
+table th:nth-of-type(7), table th:nth-of-type(3) {
   width: 5%;
 }
-  table th:nth-of-type(5),table th:nth-of-type(3){
-    width: 18%;
-  }
 
-   table tr:nth-child(2) {
-       display: none;
+table th:nth-of-type(8), table th:nth-of-type(3) {
+  width: 5%;
+}
 
-  }
-table th {    
-    padding: 20px;
-    /* border: 2px solid #005691; */
-    font-size: 16px;
-    font-weight: bold;
-    color: #FFFFFF;
-    text-align: center;
-    background-color: #004a7c;
- 
-  }
-  table td {    
-    font-size: 16px;
-    text-align: center;
-    padding: 15px 3px;
- 
-  }
+table th:nth-of-type(5), table th:nth-of-type(3) {
+  width: 18%;
+}
 
-  
-  td:not(:last-of-type){
-      /* border-right: 2px dashed #004a7c; */
-      border-right: 1px solid #004a7c;
+table tr:nth-child(2) {
+  display: none;
+}
 
-  }
-  tr:hover{
-      background-color: white;
-  }
-  td a p {
-      color: red;
-      font-size: 15px;
-      transform: rotate(150deg);  
-  }
-  
-  /* for Btn */
-  
-.listbtn{
-    background-color: #3ccfcf;
-    
-    padding: 30px 40px ;
-    border: 0px ;
-    font-size: 20px;
-    border-radius:10px ;
-    color:#fafafa;
-    width: 500px;
-    /* display: inline-block; */
-  }
+table th {
+  padding: 20px;
+  /* border: 2px solid #005691; */
+  font-size: 16px;
+  font-weight: bold;
+  color: #FFFFFF;
+  text-align: center;
+  background-color: #004a7c;
+}
 
-  #forms-section{
-      margin-top: 50px;
-      text-align: center;
-  }
-  .listform{
-      display: inline-block;
-  }
-  .listform .listbtn:hover{
-    color:#455358;
-    background-color: gold;
-  }
+table td {
+  font-size: 16px;
+  text-align: center;
+  padding: 10px 10px;
+  word-wrap: break-word;
+  vertical-align: top;
+}
 
-  
-.form-list-display{
+td:not(:last-of-type) {
+  /* border-right: 2px dashed #004a7c; */
+  border-right: 1px solid #004a7c;
+}
+
+tr:hover {
+  background-color: white;
+}
+
+td a p {
+  color: #004a7c;
+  transform: rotate(150deg);
+}
+
+/* for Btn */
+
+.listbtn {
+  background-color: #3ccfcf;
+  padding: 30px 40px;
+  border: 0px;
+  font-size: 20px;
+  border-radius: 10px;
+  color: #fafafa;
+  width: 500px;
+  /* display: inline-block; */
+}
+
+#forms-section {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.listform {
+  display: inline-block;
+}
+
+.listform .listbtn:hover {
+  color: #455358;
+  background-color: gold;
+}
+
+.form-list-display {
   margin-top: 100px;
 }
 
-.form-list-display button{margin: auto;
-  
+.form-list-display button {
+  margin: auto;
   width: 121px;
   margin: auto;
   margin-top: 20px;
@@ -149,13 +150,13 @@ table th {
   color: #fafafa;
   width: 294px;
 }
-.form-list-display button:hover{
-  color:#455358;
+
+.form-list-display button:hover {
+  color: #455358;
   background-color: gold;
 }
 
-.form-list-display select{
-  
+.form-list-display select {
   background-color: #005691;
   padding: 15px 40px 15px 9px;
   border: 0px;
@@ -167,7 +168,34 @@ table th {
   text-align: left;
   width: 293px;
 }
-.form-list-display select option{
-  border: 0px solid;
 
+.form-list-display select option {
+  border: 0px solid;
 }
+
+.fa {
+  font-size: 100px;
+  cursor: pointer;
+}
+
+audio {
+  display: none;
+}
+
+td:nth-of-type(7) {
+  font-size: 25px;
+  color: #005691;
+}
+
+td:nth-of-type(8) p {
+  font-size: 25px;
+}
+td:nth-of-type(9) form button {
+  font-size: 25px;
+  color: red;
+}
+td:nth-of-type(3),td:nth-of-type(4),td:nth-of-type(5){
+  text-align: left;
+}
+
+
