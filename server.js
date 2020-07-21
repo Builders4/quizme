@@ -34,40 +34,41 @@ app.get('/searches', (req, res) => {
     res.render('pages/search');
 });
 app.get('/showlist', showList);
-app.get('/goToQuiz/:list',sendWords);
-app.get('/deletUpdateForm/:id',formEdit);
+app.get('/goToQuiz/:list', sendWords);
+app.get('/deletUpdateForm/:id', formEdit);
 app.put('/updateWord/:id', updateWord);
 app.delete('/deleteWord/:id', deletWord);
+app.get('/challeng', loadChalleng);
 // Route Definitions
 
-function deletWord(req,res){
+function deletWord(req, res) {
     let SQL = `DELETE FROM words WHERE id=$1;`;
     let values = [req.params.id];
-    client.query(SQL,values)
-        .then(()=>{
+    client.query(SQL, values)
+        .then(() => {
             res.redirect('/showlist');
         });
 }
 
-function updateWord(req,res){
-    let {word,definition,example,synonyms,list,img_url,audio} = req.body;
+function updateWord(req, res) {
+    let { word, definition, example, synonyms, list, img_url, audio } = req.body;
     let SQL = `UPDATE words SET word=$1,definition=$2,example=$3,synonyms=$4,list=$5,img_url=$6,audio=$7 WHERE id =$8`
     let id = req.params.id;
     console.log(req.body);
-    let values = [word,definition,example,synonyms,list,img_url,audio,id];
-    client.query(SQL,values)
-        .then(()=>{
+    let values = [word, definition, example, synonyms, list, img_url, audio, id];
+    client.query(SQL, values)
+        .then(() => {
             res.redirect('/showlist');
         });
 }
 
-function formEdit(req,res){
+function formEdit(req, res) {
     let id = req.params.id;
     let SQL = `SELECT * FROM words WHERE id=$1;`;
     let safe = [id];
-    client.query(SQL,safe)
-        .then(data =>{
-            res.render('pages/show',{wordToEdit: data.rows});
+    client.query(SQL, safe)
+        .then(data => {
+            res.render('pages/show', { wordToEdit: data.rows });
         })
 }
 
@@ -85,9 +86,9 @@ function loadcards(req, res) {
     let list = req.params.list;
     let SQL = `SELECT * FROM words WHERE list=$1;`;
     let safe = [list];
-    client.query(SQL,safe)
+    client.query(SQL, safe)
         .then(data => {
-            res.render('pages/cards', { allCards: data.rows, listName: list});
+            res.render('pages/cards', { allCards: data.rows, listName: list });
         })
 
 }
@@ -106,7 +107,7 @@ function showList(req, res) {
                 .then(data2 => {
                     // console.log(list);
                     // console.log(data2.rows);
-                    res.render('pages/list', { listData: data1.rows, allList: data2.rows, list: list});
+                    res.render('pages/list', { listData: data1.rows, allList: data2.rows, list: list });
                 });
         })
 
@@ -124,10 +125,10 @@ function sendWords(req, res) {
     let list = req.params.list;
     let SQL = `SELECT * FROM words WHERE list=$1;`;
     let safe = [list];
-    client.query(SQL,safe)
+    client.query(SQL, safe)
         .then(data => {
-            let allData =JSON.stringify(data.rows);
-            res.render('pages/exam', { allData: allData, listName: list});
+            let allData = JSON.stringify(data.rows);
+            res.render('pages/exam', { allData: allData, listName: list });
         })
 }
 
@@ -154,22 +155,22 @@ function searchWord(req, res) {
     superagent.get(url)
         .then(result => {
             let tegetObj;
-            tegetObj=result.body[0].meaning['intransitive verb'];
-            if(!tegetObj){
-                tegetObj=result.body[0].meaning.noun;
+            tegetObj = result.body[0].meaning['intransitive verb'];
+            if (!tegetObj) {
+                tegetObj = result.body[0].meaning.noun;
             }
             let newWordArr = tegetObj.map(val => {
                 let newWord = new Word(val);
                 return newWord;
             })
-           return superagent.get(url2)
+            return superagent.get(url2)
                 .then(result2 => {
                     let imgArr = result2.body.images.map(val => {
                         let newImg = new Images(val);
                         return newImg;
                     })
-                    if(!imgArr.length){
-                        imgArr.push({img_url:'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png'}); 
+                    if (!imgArr.length) {
+                        imgArr.push({ img_url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png' });
                     }
                     superagent.get(url3)
                         .then(audioData => {
@@ -186,8 +187,8 @@ function searchWord(req, res) {
                     // res.status(201).json(imgArr);          
                 })
         })
-        // .catch(error => errorHandler(error,res));
-        
+    // .catch(error => errorHandler(error,res));
+
 }
 //constructor for words
 function Word(newWord) {
@@ -204,6 +205,11 @@ function Images(img) {
     // }else{
     // this.img_url = 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png';
     // }
+}
+function loadChalleng(req, res) {
+    let challengData = require('./data/challenge.json');
+    console.log(challengData);
+    res.render('pages/exam', { allData: challengData[0] });
 }
 
 function errorHandler(error, request, response) {
