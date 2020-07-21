@@ -206,8 +206,8 @@ function Images(img) {
 }
 function loadChalleng(req, res) {
     let challengData = require('./data/challenge.json');
-    console.log(challengData);
-    res.render('pages/exam', { allData: challengData[0] });
+    let allData = JSON.stringify(challengData);
+    res.render('pages/exam', { allData: allData });
 }
 
 function errorHandler(error, res) {
