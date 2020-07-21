@@ -221,6 +221,11 @@ function Word(newWord) {
 function Images(img) {
     this.img_url = img.url;
 }
+function loadChalleng(req, res) {
+    let challengData = require('./data/challenge.json');
+    let allData = JSON.stringify(challengData);
+    res.render('pages/exam', { allData: allData });
+}
 
 function errorHandler(error, res) {
     res.status(404).render('pages/error', { error: error });
