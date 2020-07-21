@@ -1,4 +1,3 @@
-console.log('here>>>>>>>>>>>');
 $(function () {
     if($('#list-div select')[0].children.length === 1){
         $('#list-div').hide();
@@ -10,7 +9,6 @@ $(function () {
         $('.suggested-imgs').hide();
     }
     $('#def-div').click(function () {
-        // console.log();
         let item=`${this.children[1].innerHTML}`;
         // let def = $(this).children("option:selected").val();
         // $("#textarea-def").text('');
@@ -31,7 +29,6 @@ $(function () {
         // }
     });
         $(".suggested-imgs img").click(function () {
-        // console.log(this);
         $("input[name=img_url]").val('');
         $("input[name=img_url]").val(this.attributes.src.value);
     });
