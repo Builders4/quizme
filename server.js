@@ -39,6 +39,9 @@ app.get('/goToQuiz/:list', sendWords);
 app.get('/deletUpdateForm/:id', formEdit);
 app.put('/updateWord/:id', updateWord);
 app.delete('/deleteWord/:id', deletWord);
+app.get('/challenge', loadChalleng);
+
+
 app.get('/aboutus', aboutUS);
 
 // Route Definitions
