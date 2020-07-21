@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/styles/reset.css">
     <link rel="stylesheet" href="/styles/style.css">
     <link rel="stylesheet" href="/styles/form.css">
+    <link rel="stylesheet" href="/styles/cards.css">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <title>show</title>
 </head>
-<body>
-    <header>
 
-    </header>
+<body>
+    <%- include ('layout/nav.ejs') %>
+
     <main>
         <section class="form-section">
             <div class="form-div ">
@@ -22,47 +25,48 @@
                     <label for="">
                         <span>Word</span>
                         <input placeholder="Word" type="text" name="word" required="" value="<%=val.word%>">
-                        </label>
-                        <label for="">
-                            <span>Pronunciation</span>
-                            <audio controls>
-                                <source src="<%=val.audio%>" type="audio/mpeg">
-                              </audio>
-      
-                            </label>
-                      
+                    </label>
+                    <label for="">
+                        <span>Pronunciation</span>
+                        <audio controls>
+                            <source src="<%=val.audio%>" type="audio/mpeg">
+                        </audio>
+
+                    </label>
+
                     <label for="">
                         <span>Definition</span>
-                        <textarea placeholder="Definition" type="text" name="definition" required="" cols="30" rows="4"><%=val.definition%></textarea>
-                        </label>
+                        <textarea placeholder="Definition" type="text" name="definition" required="" cols="30"
+                            rows="4"><%=val.definition%></textarea>
+                    </label>
 
                     <label for="">
                         <span>Example</span>
                         <textarea placeholder="Example" type="text" name="example" required="" cols="30"
-                        rows="2"><%=val.example %></textarea>
-                        </label>
+                            rows="2"><%=val.example %></textarea>
+                    </label>
                     <label for="">
                         <span>Synonyms</span>
                         <textarea placeholder="Synonyms" type="text" name="synonyms" required="" cols="30"
-                        rows="2"><%=val.synonyms%></textarea>
-                        </label>
-                        <label for="">
-                            <span>List</span>
-                            <input placeholder="List Name" type="text" name="list" value="<%=val.list%>" required="">
-                            </label>
+                            rows="2"><%=val.synonyms%></textarea>
+                    </label>
+                    <label for="">
+                        <span>List</span>
+                        <input placeholder="List Name" type="text" name="list" value="<%=val.list%>" required="">
+                    </label>
                     <div class="box-container" id="list-div">
                         <div class="box">
                             <select>
                                 <option>Saved Lists</option>
                                 <option><%=val.list%></option>
-                                
+
                             </select>
                         </div>
                     </div>
                     <label for="">
                         <span>Image Url</span>
                         <input placeholder="image Url" type="url" name="img_url" value="<%=val.img_url%>" required="">
-                        </label>
+                    </label>
                     <div class="btn-div">
                         <button class="form-btn update-btn" type="submit">UPDATE</button>
                     </div>
@@ -74,10 +78,11 @@
             </div>
         </section>
     </main>
-    <footer>
+    <%- include ('layout/footer.ejs') %>
 
-    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="js/form.js"></script>
 </body>
+
 </html>
