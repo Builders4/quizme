@@ -17,7 +17,7 @@
 
 <body>
     <%- include ('layout/nav.ejs') %>
-<h2>saeee</h2>
+    <h2>saeee</h2>
     <form action="/showlist" method="get" class="form-list-display">
         <select name="list" id="list">
             <option value="">My Lists</option>
@@ -40,6 +40,8 @@
             <th>Image</th>
             <th>audio</th>
             <th>Edit</th>
+            <th>Delete</th>
+
         </tr>
         <td>
             <% allList.forEach((val,idx) =>{ %>
@@ -51,22 +53,29 @@
                 <td><%=val.synonyms%></td>
                 <td><img src="<%=val.img_url%>" alt=""></td>
                 <td><a src="<%=val.audio%>" id="<%=val.id%>" class="fa fa-play"></a>
-                    <audio  controls>
-                    <source src="<%=val.audio%>" type="audio/mpeg">
-                  </audio></td>
-                <td><a href="/deletUpdateForm/<%=val.id%>"><p>&#x270F</p></a></td>
+                    <audio controls>
+                        <source src="<%=val.audio%>" type="audio/mpeg">
+                    </audio></td>
+                <td><a href="/deletUpdateForm/<%=val.id%>">
+                        <p>&#x270F</p>
+                    </a></td>
+                <td>
+                    <form action="/deleteWord/<%= val.id %>?_method=delete" method="post">
+                        <button class="delete-btn form-btn fa fa-trash " aria-hidden="true"></button>
+                    </form>
+                </td>
             </tr>
             <% }) %>
         </td>
     </table>
     <section id='forms-section'>
-    <form action="/goToQuiz/<%=list%>" method="get" class="listform">
-        <button class="listbtn">Take Quiz</button>
-    </form>
-    <form action="/goToCards/<%=list%>" method="get" class="listform">
-        <button class="listbtn">look to your cards</button>
-    </form>
-</section>
+        <form action="/goToQuiz/<%=list%>" method="get" class="listform">
+            <button class="listbtn">Take Quiz</button>
+        </form>
+        <form action="/goToCards/<%=list%>"  method="get" class="listform">
+            <button class="listbtn">look to your cards</button>
+        </form>
+    </section>
     <%- include ('layout/footer.ejs') %>
 
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
