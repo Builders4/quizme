@@ -185,29 +185,27 @@ function searchWord(req, res) {
                         })
                     // res.status(201).json(imgArr);          
                 })
-        })
-        // .catch(error => errorHandler(error,res));
+            })
+            .catch(error => errorHandler(error,res));
         
 }
+
 //constructor for words
 function Word(newWord) {
     this.word = newWord.word;
-    this.definition = newWord.definition;
-    this.example = newWord.example;
-    this.synonyms = newWord.synonyms;
+    this.definition = newWord.definition ? newWord.definition : 'No definition available';
+    this.example = newWord.example ? newWord.example : 'No example available';
+    this.synonyms = newWord.synonyms ? newWord.synonyms : 'No synonyms available';
     // this.list = list;
 }
+
 //constructor for images
 function Images(img) {
-    // if (img) {
     this.img_url = img.url;
-    // }else{
-    // this.img_url = 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png';
-    // }
 }
 
-function errorHandler(error, request, response) {
-    response.status(404).render('pages/error');
+function errorHandler(error, res) {
+    res.status(404).render('pages/error', {error: error});
 }
 // To connect the client 
 client.connect()
