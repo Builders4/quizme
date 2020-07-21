@@ -179,7 +179,7 @@ function searchWord(req, res) {
                     // res.status(201).json(imgArr);          
                 })
         })
-        // .catch(error => errorHandler(error));
+        .catch(error => errorHandler(error,res));
         
 }
 //constructor for words
@@ -192,15 +192,11 @@ function Word(newWord) {
 }
 //constructor for images
 function Images(img) {
-    // if (img) {
     this.img_url = img.url;
-    // }else{
-    // this.img_url = 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png';
-    // }
 }
 
-function errorHandler(error, request, response) {
-    response.status(404).render('pages/error');
+function errorHandler(error, res) {
+    res.status(404).render('pages/error', {error: error});
 }
 // To connect the client 
 client.connect()
