@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -42,29 +41,36 @@
             var questions = [];
             let allDefinitions = listArr.map(val => val.definition);
             Question.prototype.choicesGenerator = function () {
-                this.choices = randomChoices(allDefinitions, this.correctAnswer);
+                this.choices =shuffle(randomChoices(allDefinitions, this.definition));
+                // console.log(this.choices);
+                this.correctAnswer = this.choices.indexOf(this.definition);
             }
-            function Question(obj) {
+            function shuffle(array) {
+                array.sort((array) => Math.random() - 0.5);
+                return array;
+            }
+            function Question(obj, idx) {
                 this.question = `What  is the definition of ${obj.word} ?`;
                 this.choices;
-                this.correctAnswer = obj.definition
+                this.definition = obj.definition;
+                this.correctAnswer;
                 this.choicesGenerator();
                 questions.push(this);
             }
-            listArr.forEach((element,idx) => {
-                correctIdx= idx;
-                new Question(element)});
+            listArr.forEach((element, idx) => {
+                new Question(element, idx)
+            });
             console.log(questions);
 
             function randomChoices(allDefinitions, correctAnswer) {
-                let randomIdxArr = [];
-                let definitionsArr = [];
+                let randomIdxArr = [allDefinitions.indexOf(correctAnswer)];
+                let definitionsArr = [correctAnswer];
 
-                for (let index = 0; index < (allDefinitions.length-1) && index < 4; index++) {
-                    let a= 4;
+                for (let index = 0; index < (allDefinitions.length - 1) && index < 4; index++) {
+                    let a = 4;
                     while (true) {
                         let tempIdx = getRandomInt(0, allDefinitions.length);
-                        if (!randomIdxArr.includes(tempIdx) && tempIdx != correctIdx) {
+                        if (!randomIdxArr.includes(tempIdx)) {
                             randomIdxArr.push(tempIdx);
                             definitionsArr.push(allDefinitions[tempIdx]);
                             break;
@@ -185,8 +191,8 @@
                 var input = '';
                 for (var i = 0; i < questions[index].choices.length; i++) {
                     item = $('<li>');
-                    input = '<input type="radio" name="answer" value=' + i + ' />';
-                    input += questions[index].choices[i];
+                    input = `<input id="${i}" type="radio" name="answer" value='${i}' />`;
+                    input += `<label for="${i}"> ${questions[index].choices[i]}</label>`;
                     item.append(input);
                     radioList.append(item);
                 }
