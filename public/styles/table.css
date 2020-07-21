@@ -173,7 +173,7 @@ td a p {
   border: 0px solid;
 }
 
-.fa {
+table .fa:nth-of-type(0) {
   font-size: 100px;
   cursor: pointer;
 }
