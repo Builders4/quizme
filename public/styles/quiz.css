@@ -54,6 +54,7 @@
 #container {
     width:50%;
     margin:auto;
+    margin-top: 100px;
     padding: 0 25px 40px 10px;
     background: url("https://i.ibb.co/xLSccjF/imageedit-2-6024667787.jpg");
     background-size: cover;

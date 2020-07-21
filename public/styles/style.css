@@ -12,8 +12,8 @@ body{
 h1 {
     /* font-family: 'Lobster',Arial, Helvetica, sans-serif; */
     /* font-family: 'Dancing Script', cursive; */
-    font-family: 'Playfair Display SC', cursive ;
-
+    /* font-family: 'Playfair Display SC', cursive ; */
+    font-family: 'Gloria Hallelujah', cursive;
     /* font-family:'Grenze Gotisch'; */
     padding: 15px;
   /* font-family: 'Caveat', cursive; */
@@ -26,6 +26,15 @@ h1 {
   color: #fafafa;
   border: 4px solid #fafafa;
 }
+
+
+
+
+
+
+
+
+
 #emps{
     
     background-image: url(https://assets.quizlet.com/a/i/prismic/scribble.4d59e306220788c.svg);

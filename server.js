@@ -24,6 +24,7 @@ app.use(express.urlencoded({ extended: true }));
 
 
 //General Route
+
 app.get('/', loadApp);
 app.post('/add', addCardToDB)
 app.get('/goToCards/:list', loadcards);
@@ -38,6 +39,8 @@ app.get('/goToQuiz/:list', sendWords);
 app.get('/deletUpdateForm/:id', formEdit);
 app.put('/updateWord/:id', updateWord);
 app.delete('/deleteWord/:id', deletWord);
+app.get('/aboutus', aboutUS);
+
 // Route Definitions
 
 function deletWord(req, res) {
@@ -151,7 +154,10 @@ function sendWords(req, res) {
 function loadApp(req, res) {
     res.status(200).render('pages/index')
 }
+function aboutUS(req,res){
+    res.status(200).render('pages/aboutus')
 
+}
 
 //route to handle searching for a word
 function searchWord(req, res) {
