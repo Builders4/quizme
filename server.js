@@ -24,6 +24,7 @@ app.use(express.urlencoded({ extended: true }));
 
 
 //General Route
+
 app.get('/', loadApp);
 app.post('/add', addCardToDB)
 app.get('/goToCards/:list', loadcards);
@@ -38,16 +39,23 @@ app.get('/goToQuiz/:list', sendWords);
 app.get('/deletUpdateForm/:id', formEdit);
 app.put('/updateWord/:id', updateWord);
 app.delete('/deleteWord/:id', deletWord);
-app.get('/challeng', loadChalleng);
+app.get('/aboutus', aboutUS);
+
 // Route Definitions
 
 function deletWord(req, res) {
-    let SQL = `DELETE FROM words WHERE id=$1;`;
-    let values = [req.params.id];
-    client.query(SQL, values)
-        .then(() => {
-            res.redirect('/showlist');
-        });
+    let SQL1 = `SELECT * FROM words WHERE id=$1 `
+    let val = [req.params.id];
+    client.query(SQL1, val)
+        .then((result) => {
+            console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>',result.rows[0].list);
+            let SQL2 = `DELETE FROM words WHERE id=$1;`
+            client.query(SQL2, val)
+                .then(() => {
+                    console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>',result.rows[0].list);
+                    res.redirect(`/showlist?list=${result.rows[0].list}`);
+                })
+        })
 }
 
 function updateWord(req, res) {
@@ -58,8 +66,8 @@ function updateWord(req, res) {
     let values = [word, definition, example, synonyms, list, img_url, audio, id];
     client.query(SQL, values)
         .then(() => {
-            res.redirect('/showlist');
-        });
+            res.redirect(`/showlist?list=${list}`);
+   });
 }
 
 function formEdit(req, res) {
@@ -73,11 +81,17 @@ function formEdit(req, res) {
 }
 
 function deleteCard(req, res) {
-    let SQL = `DELETE FROM words WHERE id=$1;`
+    let SQL1 = `SELECT * FROM words WHERE id=$1 `
     let val = [req.params.id];
-    client.query(SQL, val)
-        .then(() => {
-            res.redirect('/cards');
+    client.query(SQL1, val)
+        .then((result) => {
+            console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>',result.rows[0].list);
+            let SQL2 = `DELETE FROM words WHERE id=$1;`
+            client.query(SQL2, val)
+                .then(() => {
+                    console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>',result.rows[0].list);
+                    res.redirect(`/showlist?list=${result.rows[0].list}`);
+                })
         })
 }
 
@@ -118,7 +132,7 @@ function addCardToDB(req, res) {
     let safeValues = [req.body.word, req.body.definition, req.body.example, req.body.synonyms, req.body.list, req.body.img_url, req.body.audio];
     client.query(SQL, safeValues)
         .then(() => {
-            res.redirect('/showlist');
+            res.redirect(`/showlist?list=${req.body.list}`);
         });
 }
 function sendWords(req, res) {
@@ -140,7 +154,10 @@ function sendWords(req, res) {
 function loadApp(req, res) {
     res.status(200).render('pages/index')
 }
+function aboutUS(req,res){
+    res.status(200).render('pages/aboutus')
 
+}
 
 //route to handle searching for a word
 function searchWord(req, res) {
@@ -186,9 +203,9 @@ function searchWord(req, res) {
                         })
                     // res.status(201).json(imgArr);          
                 })
-            })
-            .catch(error => errorHandler(error,res));
-        
+        })
+        .catch(error => errorHandler(error, res));
+
 }
 
 //constructor for words
@@ -211,7 +228,7 @@ function loadChalleng(req, res) {
 }
 
 function errorHandler(error, res) {
-    res.status(404).render('pages/error', {error: error});
+    res.status(404).render('pages/error', { error: error });
 }
 // To connect the client 
 client.connect()
