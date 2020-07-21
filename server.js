@@ -7,6 +7,7 @@ const express = require('express');
 const superagent = require('superagent');
 const pg = require('pg');
 const methodOverride = require('method-override');
+const { json } = require('express');
 
 // Application Setup
 const app = express();
@@ -103,7 +104,7 @@ function showList(req, res) {
             return client.query(SQL2, safe)
                 .then(data2 => {
                     // console.log(list);
-                    console.log(data2.rows);
+                    // console.log(data2.rows);
                     res.render('pages/list', { listData: data1.rows, allList: data2.rows, list: list});
                 });
         })
@@ -124,7 +125,8 @@ function sendWords(req, res) {
     let safe = [list];
     client.query(SQL,safe)
         .then(data => {
-            res.render('pages/exam', { allData: data.rows, listName: list});
+            let allData =JSON.stringify(data.rows);
+            res.render('pages/exam', { allData: allData, listName: list});
         })
 }
 
@@ -169,7 +171,7 @@ function searchWord(req, res) {
                             let SQL = `SELECT DISTINCT list FROM words;`;
                             client.query(SQL)
                                 .then(data => {
-                                    console.log(data.rows);
+                                    // console.log(data.rows);
                                     res.render('pages/new', { newWord: newWordArr, word: word, images: imgArr, audio: aduioLink, list: data.rows });
                                 })
                         })
