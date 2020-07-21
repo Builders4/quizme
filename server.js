@@ -153,8 +153,12 @@ function searchWord(req, res) {
 
     superagent.get(url)
         .then(result => {
-            // console.log(result.body.meaning);
-            let newWordArr = result.body[0].meaning.noun.map(val => {
+            let tegetObj;
+            tegetObj=result.body[0].meaning['intransitive verb'];
+            if(!tegetObj){
+                tegetObj=result.body[0].meaning.noun;
+            }
+            let newWordArr = tegetObj.map(val => {
                 let newWord = new Word(val);
                 return newWord;
             })
@@ -179,7 +183,7 @@ function searchWord(req, res) {
                     // res.status(201).json(imgArr);          
                 })
         })
-        // .catch(error => errorHandler(error));
+        // .catch(error => errorHandler(error,res));
         
 }
 //constructor for words
