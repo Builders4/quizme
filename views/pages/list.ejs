@@ -20,6 +20,8 @@
 <h2>saeee</h2>
     <form action="/showlist" method="get" class="form-list-display">
         <select name="list" id="list">
+            <option value="">My Lists</option>
+
             <%listData.forEach(list=>{%>
             <option value="<%=list.list%>"><%=list.list%></option>
             <%})%>
@@ -40,9 +42,9 @@
             <th>Edit</th>
         </tr>
         <td>
+            <% allList.forEach((val,idx) =>{ %>
             <tr>
-                <% allList.forEach(val =>{ %>
-                <td><%=val.id%></td>
+                <td><%=(idx+1)%></td>
                 <td><%=val.word%></td>
                 <td><%=val.definition%></td>
                 <td><%=val.example%></td>
@@ -68,6 +70,7 @@
     <%- include ('layout/footer.ejs') %>
 
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="js/table.js"></script>
     <script src="js/audio.js"></script>
 </body>
 
