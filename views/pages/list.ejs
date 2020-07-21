@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="/styles/style.css">
     <link rel="stylesheet" href="/styles/cards.css">
     <link rel="stylesheet" href="/styles/table.css">
+    <link rel="stylesheet" href="/styles/audio.css">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <title>new list</title>
@@ -46,16 +48,11 @@
                 <td><%=val.example%></td>
                 <td><%=val.synonyms%></td>
                 <td><img src="<%=val.img_url%>" alt=""></td>
-                <td>
-                    <audio controls>
-                        <source src="<%=val.audio%>" type="audio/mpeg">
-                    </audio>
-                </td>
-                <td>
-                    <a href="/deletUpdateForm/<%=val.id%>">
-                        <p>&#x270F</p>
-                    </a>
-                </td>
+                <td><a src="<%=val.audio%>" id="<%=val.id%>" class="fa fa-volume-up"></a>
+                    <audio  controls>
+                    <source src="<%=val.audio%>" type="audio/mpeg">
+                  </audio></td>
+                <td><a href="/deletUpdateForm/<%=val.id%>"><p>&#x270F</p></a></td>
             </tr>
             <% }) %>
         </td>
@@ -70,6 +67,8 @@
 </section>
     <%- include ('layout/footer.ejs') %>
 
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="js/audio.js"></script>
 </body>
 
 </html>
