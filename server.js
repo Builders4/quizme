@@ -168,6 +168,9 @@ function searchWord(req, res) {
                         let newImg = new Images(val);
                         return newImg;
                     })
+                    if(!imgArr.length){
+                        imgArr.push({img_url:'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png'}); 
+                    }
                     superagent.get(url3)
                         .then(audioData => {
                             let targetAduio = audioData.body[0].hwi.prs[0].sound.audio;
