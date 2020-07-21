@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/styles/reset.css">
     <link rel="stylesheet" href="/styles/style.css">
+    <link rel="stylesheet" href="/styles/cards.css">
     <link rel="stylesheet" href="/styles/table.css">
     <link rel="stylesheet" href="/styles/audio.css">
 
@@ -12,19 +14,21 @@
 
     <title>new list</title>
 </head>
-<body>
-    
-<form action="/showlist" method="get">
-    <select name="list" id="list">
-        <%listData.forEach(list=>{%>
-        <option value="<%=list.list%>"><%=list.list%></option>
-        <%})%>
-    </select>
-    <button type="submit">Select</button>
-</form>
 
-<table class="tableBlue">
-    <thead>
+<body>
+    <%- include ('layout/nav.ejs') %>
+<h2>saeee</h2>
+    <form action="/showlist" method="get" class="form-list-display">
+        <select name="list" id="list">
+            <%listData.forEach(list=>{%>
+            <option value="<%=list.list%>"><%=list.list%></option>
+            <%})%>
+        </select>
+        <button type="submit">Select</button>
+    </form>
+
+    <table class="tableBlue">
+
         <tr>
             <th>ID</th>
             <th>Word</th>
@@ -35,10 +39,9 @@
             <th>audio</th>
             <th>Edit</th>
         </tr>
-    </thead>
-    <tbody>
-        <% allList.forEach(val =>{ %>
+        <td>
             <tr>
+                <% allList.forEach(val =>{ %>
                 <td><%=val.id%></td>
                 <td><%=val.word%></td>
                 <td><%=val.definition%></td>
@@ -52,15 +55,20 @@
                 <td><a href="/deletUpdateForm/<%=val.id%>"><p>&#x270F</p></a></td>
             </tr>
             <% }) %>
-        </tbody>
+        </td>
     </table>
-    <form action="/goToQuiz/<%=list%>" method="get">
-        <button>Take Quiz</button>
+    <section id='forms-section'>
+    <form action="/goToQuiz/<%=list%>" method="get" class="listform">
+        <button class="listbtn">Take Quiz</button>
     </form>
-    <form action="/goToCards/<%=list%>" method="get">
-        <button>look to your cards</button>
+    <form action="/goToCards/<%=list%>" method="get" class="listform">
+        <button class="listbtn">look to your cards</button>
     </form>
+</section>
+    <%- include ('layout/footer.ejs') %>
+
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="js/audio.js"></script>
 </body>
+
 </html>
