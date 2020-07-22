@@ -82,32 +82,32 @@ var currentTab = 0; // Current tab is set to be the first tab (0)
     //... and adds the "active" class on the current step:
     x[n].className += " active";
   }
-$(function () {
+// $(function () {
 
   // ++++++++++++++++++FPRM-END+++++++++++++++++
   // ++++++++++++++++++SELECT-START+++++++++++++++++
 
-    if($('#list-div select')[0].children.length === 1){
-        $('#list-div').hide();
-    }
-    if($('#def-div select')[0].children.length === 1){
-        $('#def-div').hide();
-    }
-    if(!$('.suggested-imgs img')[0]){
-        $('.suggested-imgs').hide();
-    }
+//     if($('#list-div select')[0].children.length === 1){
+//         $('#list-div').hide();
+//     }
+//     if($('#def-div select')[0].children.length === 1){
+//         $('#def-div').hide();
+//     }
+//     if(!$('.suggested-imgs img')[0]){
+//         $('.suggested-imgs').hide();
+//     }
 
 
-    $('#def-div').click(function () {
-        let item=`${this.children[1].innerHTML}`;
-        // let def = $(this).children("option:selected").val();
-        // $("#textarea-def").text('');
-        // if ('Suggested Definitions' != def) {
-            $("#textarea-def").text(item);
-            console.log(item);
+//     $('#def-div').click(function () {
+//         let item=`${this.children[1].innerHTML}`;
+//         // let def = $(this).children("option:selected").val();
+//         // $("#textarea-def").text('');
+//         // if ('Suggested Definitions' != def) {
+//             $("#textarea-def").text(item);
+//             console.log(item);
 
-        // }
-    });
+//         // }
+//     });
     $('#list-div').click(function () {
         let item=`${this.children[1].innerHTML}`;
         
@@ -122,7 +122,7 @@ $(function () {
         $("input[name=img_url]").val('');
         $("input[name=img_url]").val(this.attributes.src.value);
     });
-}); 
+// }); 
   // ++++++++++++++++++SELECT-END+++++++++++++++++
 
 
