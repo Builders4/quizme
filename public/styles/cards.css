@@ -18,7 +18,7 @@ rgb(232,241,245) 6%,transparent 6%, transparent
 100%),linear-gradient(90deg, rgb(232,241,245),rgb(232,241,245));
 }
 
-#sectionCards{
+#sectioFCards{
     display: flex;
     width: 80%;
     margin: auto auto;
@@ -289,6 +289,7 @@ rgb(232,241,245) 6%,transparent 6%, transparent
   overflow: hidden;
   width: 100%;
   z-index: 99999999;
+
 }
 .sticky #myLinks {      
   float: right;
@@ -302,6 +303,8 @@ rgb(232,241,245) 6%,transparent 6%, transparent
   padding: 22.5px 16px;
   text-decoration: none;
   font-size: 17px;
+  font-size: 22px;
+
 }
   
   .sticky a:hover {

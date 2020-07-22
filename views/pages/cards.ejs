@@ -4,19 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
     <link rel="stylesheet" href="/styles/reset.css">
     <link rel="stylesheet" href="/styles/style.css">
     <link rel="stylesheet" href="/styles/cards.css">
     <script src="https://kit.fontawesome.com/4041ed350e.js" crossorigin="anonymous"></script>
+    <title>Cards</title>
+
 
 
 </head>
 
 <body>
     <%- include ('layout/nav.ejs') %>
+
     <main>
-        <section id="sectionCards">
+        <section id="sectioFCards">
 
             <%  allCards.forEach(card=>{ %>
             <div class="marg">
@@ -42,11 +44,25 @@
             <% }) %>
         </section>
     </main>
-    <!-- start for the footer -->
-    <%- include ('layout/footer.ejs') %>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="js/nav.js"></script>
+    <%- include ('layout/footer.ejs') %>
+    <script>
+       
+var x = document.getElementById("myLinks");
+function myFunction() {
+	if (x.style.display === "inline-block") {
+	  x.style.display = "none";
+	} else {
+	  x.style.display = "inline-block";
+	}
+  }
+    </script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <!-- <script src="../../public/js/app.js"></script> -->
+    
+    
+    <!-- <script src="js/nav.js"></script> -->
 </body>
 
 </html>

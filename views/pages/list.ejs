@@ -15,8 +15,30 @@
 </head>
 
 <body>
-    <%- include ('layout/nav.ejs') %>
-    <h2>saeee</h2>
+    <header>
+        <div class="topnav">
+            <a href="/" class="active">QUIZ<span id="logospan">ME</span></a>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <i class="fa fa-bars"></i>
+            </a>
+            <div id="myLinks">
+                <a href="/">Home</a>
+                <a href="/searches">Search</a>
+                <a href="/showlist">Your list</a>
+                <a href="/aboutus">About</a>
+            </div>
+        </div>
+
+        <div class="header"style="height: 33vh">
+            
+            <h1>Your <span id="logospan">Lists</span></h1>
+
+        </div>
+        <div class="canvas-wrap">
+            <canvas id="canvas"></canvas>
+        </div>
+    </header>
+    
     <form action="/showlist" method="get" class="form-list-display">
         <select name="list" id="list">
             <option value="">My Lists</option>
@@ -78,6 +100,8 @@
     <%- include ('layout/footer.ejs') %>
 
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="js/app.js"></script>
+    
     <script src="js/table.js"></script>
     <script src="js/nav.js"></script>
     <script src="js/audio.js"></script>
