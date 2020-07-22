@@ -39,9 +39,8 @@ rgb(232,241,245) 6%,transparent 6%, transparent
 input, textarea {
     display: block;
     width: 100%;
-    font-size: 14pt;
+    font-size: 20px;
     line-height: 20pt;
-    font-family: "Fjalla One";
     margin-bottom: 20pt;
     border: none;
     border-bottom: 5px solid #004a7c;
@@ -63,18 +62,21 @@ input:focus, textarea:focus {
     margin: 0 auto;
     line-height: 28pt;
     padding: 0 20px;
-    background: #e5ebf8;
+    background: #004a7c;
     letter-spacing: 2px;
     transition: .2s all ease-in-out;
     outline: none;
     border: 1px solid black;
     box-shadow: 3px 3px 1px #95a4ff, 3px 3px 1px 1px black;
+    color: #e5ebf8;
+
 }
 
 .form-btn:hover {
-    background: #004a7c;
-    color: white;
+    color: #004a7c;
     border: 1px solid #004a7c;
+    background: #e5ebf8;
+
 }
 
 /* 
@@ -166,9 +168,7 @@ border:2px solid #004a7c;
     border: 2px solid #ffa580;
 }
 .suggested-imgs p{
-    font-family: "Fjalla One";
     font-size: 20px;
-    color: #004a7c;
     margin-bottom: 5px;
 
 }
@@ -184,11 +184,12 @@ border:2px solid #004a7c;
   }
   
   .select-selected {
-    background-color: DodgerBlue;
+    background-color: #004a7c;
   }
   
   /*style the arrow inside the select element:*/
   .select-selected:after {
+
     position: absolute;
     content: "";
     top: 14px;
@@ -207,19 +208,23 @@ border:2px solid #004a7c;
   
   /*style the items (options), including the selected item:*/
   .select-items div,.select-selected {
+    font-size: 18px;
     color: #ffffff;
     padding: 13px 16px;
+
     border: 1px solid transparent;
     border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
     cursor: pointer;
     user-select: none;
     margin: 15px 0;
+    font-family: 'Boogaloo', cursive ;
+
   }
   
   /*style items (options):*/
   .select-items {
     position: absolute;
-    background-color: DodgerBlue;
+    background-color: #004a7c;
     top: 100%;
     left: 0;
     right: 0;
@@ -242,27 +247,36 @@ border:2px solid #004a7c;
   body {
     background-color: #f1f1f1;
   }
+  #regForm h2{
+    font-size: 40px;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-bottom: 5px solid #004a7c
+  }
 
   #regForm {
+    
+    background: url(https://i.ibb.co/xLSccjF/imageedit-2-6024667787.jpg) center center no-repeat;
+    background-size: cover;
+    background-position-x: center;
+    background-position-y: bottom;
+    padding: 50px 100px;
+    border: 2px solid #004a7c;
+    box-shadow: 15px 15px 1px #004a7c, 15px 15px 1px 2px black;
     background-color: #ffffff;
     margin: 100px auto;
-    font-family: Raleway;
     padding: 40px;
-    width: 70%;
+    width: 60%;
+    min-height: 450px;
     min-width: 300px;
   }
 
-  form h1 {
-    text-align: center;
-    color: #004a7c;
-  }
 
  form input {
     padding: 10px;
     width: 100%;
-    font-size: 17px;
-    font-family: Raleway;
-    border: 1px solid #aaaaaa;
+    font-size: 20px;
   }
 
   /* Mark input boxes that gets an error on validation: */
@@ -277,23 +291,27 @@ border:2px solid #004a7c;
   }
 
   form button {
-    background-color: #4CAF50;
-    color: #ffffff;
-    border: none;
-    padding: 10px 20px;
-    font-size: 17px;
-    font-family: Raleway;
     cursor: pointer;
+    
+    font-weight: bold;
+    margin: 0 auto;
+    line-height: 28pt;
+    padding: 0 20px;
+    background: #004a7c;
+    letter-spacing: 2px;
+    transition: .2s all ease-in-out;
+    outline: none;
+    border: 1px solid black;
+    color: #e5ebf8
   }
 
   form button:hover {
-    opacity: 0.8;
-  }
+    color: #004a7c;
+    border: 1px solid #004a7c;
+    background: #e5ebf8;
+}
 
-  #prevBtn {
-    background-color: #bbbbbb;
-  }
-
+  
   /* Make circles that indicate the steps of the form: */
   .step {
     height: 15px;
@@ -312,9 +330,8 @@ border:2px solid #004a7c;
 
   /* Mark the steps that are finished and valid: */
   .step.finish {
-    background-color: #4CAF50;
+    background-color: black;
   }
-  form:first-child{
-      /* height: 600px; */
-
+  label{
+    font-size: 30px;
   }

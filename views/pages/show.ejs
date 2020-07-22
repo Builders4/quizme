@@ -16,7 +16,11 @@
 <body>
     <header>
         <div class="topnav">
-            <a href="/" class="active">QUIZ<span id="logospan">ME</span></a>
+            <div class="nhov">
+
+                <a href="/" class="active">QUIZ<span id="logospan">ME</span></a>
+            </div>
+
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">
                 <i class="fa fa-bars"></i>
             </a>
@@ -30,7 +34,7 @@
         </div>
 
         <div class="header">
-            
+
             <h1>QUIZ<span id="logospan">ME</span></h1>
 
         </div>
@@ -38,15 +42,18 @@
             <canvas id="canvas"></canvas>
         </div>
     </header>
-    
+
     <main>
         <% wordToEdit.forEach(val =>{ %>
         <form id="regForm" action="/updateWord/<%=val.id%>?_method=put" method="post">
-            <h1>UPDATE WORD</h1>
+            <h2>UPDATE WORD</h2>
             <!-- One "tab" for each step in the form: -->
-            <div class="tab">Word:
+            <div class="tab">
+                <label for=""> Word:</label>
+
                 <p><input placeholder="Word" oninput="this.className = ''" name="word" value="<%=val.word%>"></p>
-                Pronunciation:
+                <label for="">Pronunciation:</label>
+
                 <div>
                     <audio controls>
                         <source src="<%=val.audio%>" type="audio/mpeg">
@@ -56,17 +63,22 @@
                         name="audio"></p>
             </div>
             <div class="tab">
-                Definition:
+                <label for=""> Definition:
+                    :</label>
+
                 <p><textarea id="textarea-def" placeholder="Definition" type="text" name="definition"
                         oninput="this.className = ''" cols="30" rows="1"><%=val.definition%></textarea></p>
-                Example:
+                <label for="">Example:</label>
+
                 <p><textarea placeholder="Example" type="text" name="example" oninput="this.className = ''" cols="30"
                         rows="1"><%=val.example %></textarea></p>
-                Synonyms:
+
+                <label for="">Synonyms:</label>
+
                 <p><textarea placeholder="Synonyms" type="text" name="synonyms" cols="30" rows="1"
                         oninput="this.className = ''"><%=val.synonyms%></textarea></p>
             </div>
-            <div class="tab">Image:
+            <div class="tab"> <label for="">Imge:</label>
                 <p>
                     <input placeholder="Image Url" type="url" name="img_url" value="<%=val.img_url%>"
                         oninput="this.className = ''">
@@ -75,9 +87,12 @@
                     <p>Preview Image</p>
                     <img src="<%=val.img_url%>" alt="">
                 </div>
-                List Name:
+                <label for="">List Name:</label>
+
+
                 <p>
-                    <input placeholder="List Name" type="text" name="list" oninput="this.className = ''" value="<%=val.list%>">
+                    <input placeholder="List Name" type="text" name="list" oninput="this.className = ''"
+                        value="<%=val.list%>">
                 </p>
                 <p>
                 <div class="custom-select" style="width:300px;" id="list-div">
@@ -111,6 +126,8 @@
 
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="/form2.js"></script>
+    <script src="/nav.js"></script>
+
 </body>
 
 </html>
