@@ -12,7 +12,7 @@ var currentTab = 0; // Current tab is set to be the first tab (0)
       document.getElementById("prevBtn").style.display = "inline";
     }
     if (n == (x.length - 1)) {
-      document.getElementById("nextBtn").innerHTML = "Add Word";
+      document.getElementById("nextBtn").innerHTML = "Update Word";
     } else {
       document.getElementById("nextBtn").innerHTML = "Next";
     }
