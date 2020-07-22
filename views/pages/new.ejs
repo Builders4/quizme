@@ -11,45 +11,55 @@
 <title>new card</title>
 <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 <style>
- 
+
 </style>
 
 <body>
   <%- include ('layout/nav.ejs') %>
   <form id="regForm" action="/add" method="post">
-    <h1>ADD WORD</h1>
+    <h2>ADD WORD</h2>
     <!-- One "tab" for each step in the form: -->
-    <div class="tab">Word:
-      <p><input placeholder="Word" oninput="this.className = ''" name="word" value="<%=word%>"></p>Pronunciation<div>
+    <div class="tab">
+      <label for=""> Word:</label>
+      <p><input placeholder="Word" oninput="this.className = ''" name="word" value="<%=word%>"></p>
+      <label for=""> Pronunciation:</label>
+
+      <div>
         <audio controls>
           <source src="<%=audio%>" type="audio/mpeg">
         </audio>
       </div>
       <p><input placeholder="audio" oninput="this.className = ''" type="hidden" value="<%=audio%>" name="audio"></p>
     </div>
-    <div class="tab">Definition:
+    <div class="tab">
+      <label for=""> Definition:</label>
       <p> <textarea id="textarea-def" placeholder="Definition" type="text" name="definition"
           oninput="this.className = ''" cols="30" rows="1"></textarea></p>
-          <p>
-            <div class="custom-select" style="width:300px;" id="def-div">
-                           
-              <select >
-                  <option>Suggested Definitions</option>
-                  <% newWord.forEach(val =>{ %>
-                      <option><%=val.definition%></option>
-                      <% }) %>
-                  </select>
-              </select>
+      <p>
+      <div class="custom-select" style="width:300px;" id="def-div">
+
+        <select>
+          <option>Suggested Definitions</option>
+          <% newWord.forEach(val =>{ %>
+          <option><%=val.definition%></option>
+          <% }) %>
+        </select>
+        </select>
       </div>
-          </p>
+      </p>
     </div>
-    <div class="tab">Example:
+    <div class="tab">
+      <label for=""> Example:</label>
+
       <p> <textarea placeholder="Example" type="text" name="example" oninput="this.className = ''" cols="30"
-          rows="1"><%=newWord[0].example %></textarea></p>Synonyms: <p>
+          rows="1"><%=newWord[0].example %></textarea>
+          <label for=""> Synonyms:</label>
         <textarea placeholder="Synonyms" type="text" name="synonyms" cols="30" rows="1"
           oninput="this.className = ''"><%=newWord[0].synonyms%></textarea></p>
     </div>
-    <div class="tab">Image:
+    <div class="tab">
+      <label for=""> Image:</label>
+
       <p>
         <input placeholder="Image Url" type="url" name="img_url" value="" oninput="this.className = ''">
       </p>
@@ -62,19 +72,21 @@
  <%})%>
       </div>
     </div>
-    <div class="tab">List Name:
+    <div class="tab">
+      <label for=""> List Name:</label>
+
       <p>
         <input placeholder="List Name" type="text" name="list" oninput="this.className = ''">
       </p>
       <p>
-        <div class="custom-select" style="width:300px;"id="list-div">
-                          
-          <select>
-              <option>Saved Lists</option>
-              <% list.forEach(val =>{ %>
-              <option><%=val.list%></option>
-              <% }) %>
-          </select>
+      <div class="custom-select" style="width:300px;" id="list-div">
+
+        <select>
+          <option>Saved Lists</option>
+          <% list.forEach(val =>{ %>
+          <option><%=val.list%></option>
+          <% }) %>
+        </select>
       </div>
       </p>
 
@@ -94,12 +106,12 @@
       <span class="step"></span>
     </div>
   </form>
-  
+
   <%- include ('layout/footer.ejs') %>
-   
-          <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-          <script src="js/form.js"></script>
-          <script src="js/nav.js"></script>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script src="js/form.js"></script>
+  <script src="js/nav.js"></script>
 
 </body>
 

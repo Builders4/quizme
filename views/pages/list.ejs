@@ -16,7 +16,11 @@
 <body>
     <header>
         <div class="topnav">
-            <a href="/" class="active">QUIZ<span id="logospan">ME</span></a>
+            <div class="nhov">
+
+                <a href="/" class="active">QUIZ<span id="logospan">ME</span></a>
+            </div>
+
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">
                 <i class="fa fa-bars"></i>
             </a>
@@ -28,8 +32,8 @@
             </div>
         </div>
 
-        <div class="header"style="height: 33vh">
-            
+        <div class="header" style="height: 33vh">
+
             <h1>Your <span id="logospan">Lists</span></h1>
 
         </div>
@@ -37,7 +41,7 @@
             <canvas id="canvas"></canvas>
         </div>
     </header>
-    
+
     <form action="/showlist" method="get" class="form-list-display">
         <select name="list" id="list">
             <option value="">My Lists</option>
@@ -92,7 +96,7 @@
         <form action="/goToQuiz/<%=list%>" method="get" class="listform">
             <button class="listbtn">Take Quiz</button>
         </form>
-        <form action="/goToCards/<%=list%>"  method="get" class="listform">
+        <form action="/goToCards/<%=list%>" method="get" class="listform">
             <button class="listbtn">look to your cards</button>
         </form>
     </section>
@@ -100,7 +104,7 @@
 
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="js/app.js"></script>
-    
+
     <script src="js/table.js"></script>
     <script src="js/nav.js"></script>
     <script src="js/audio.js"></script>
