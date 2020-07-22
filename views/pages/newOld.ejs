@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/reset.css">
+    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="stylesheet" href="/styles/cards.css">
+    <link rel="stylesheet" href="/styles/form.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>new card</title>
+</head>
+
+<body>
+    <%- include ('layout/nav.ejs') %>
+
+    <main>
+        <section class="form-section">
+            <div class="form-div ">
+                <form action="/add" method="post">
+                    <label for="">
+                        <span>Word</span>
+                        <input placeholder="Word" type="text" value="<%=word%>" name="word" required="">
+                    </label>
+                    <label for="">
+                        <span>Pronunciation</span>
+                        <input placeholder="audio" type="hidden" value="<%=audio%>" name="audio" required="">
+                        <div>
+                            <audio controls>
+                                <source src="<%=audio%>" type="audio/mpeg">
+                            </audio>
+                        </div>
+                    </label>
+                    <label for="">
+                        <span>Definition</span>
+                        <textarea id="textarea-def" placeholder="Definition" type="text" name="definition" required=""
+                            cols="30" rows="2"></textarea>
+                    </label>
+
+                    
+                    <!--                       
+                             <select> <option>Suggested Definitions</option>
+                                                        <% newWord.forEach(val =>{ %>
+                                                        <option><%=val.definition%></option>
+                                                        <% }) %>      
+                                                -->
+                    <div class="box-container" >
+                        <div class="box">
+                            <div class="custom-select" style="width:300px;" id="def-div">
+                           
+                                <select >
+                                    <option>Suggested Definitions</option>
+                                    <% newWord.forEach(val =>{ %>
+                                        <option><%=val.definition%></option>
+                                        <% }) %>
+                                    </select>
+                                </select>
+                        </div>
+                    </div>
+                    <label for="">
+                        <span>Example</span>
+                        <textarea placeholder="Example" type="text" name="example" required="" cols="30"
+                            rows="2"><%=newWord[0].example %></textarea>
+                    </label>
+                    <label for="">
+                        <span>Synonyms</span>
+                        <textarea placeholder="Synonyms" type="text" name="synonyms" required="" cols="30"
+                            rows="2"><%=newWord[0].synonyms%></textarea>
+                    </label>
+
+                    <label for="">
+                        <span>List</span>
+                    <input placeholder="List Name" type="text" name="list" required="">
+                    </label>
+                    <div class="box-container">
+                        <div class="box">
+                            <div class="custom-select" style="width:300px;"id="list-div">
+                          
+                            <select>
+                                <option>Saved Lists</option>
+                                <% list.forEach(val =>{ %>
+                                <option><%=val.list%></option>
+                                <% }) %>
+                            </select>
+                        </div>
+                        </div>
+                    </div>
+                    <label for="">
+                        <span>Image Url</span>
+                    <input placeholder="Image Url" type="url" name="img_url" value="" required="">
+                    </label>
+                    <div class="suggested-imgs">
+                        <p>Suggested Images</p>
+                        <%images.forEach((val,indx) =>{%>
+                        <%if(3>indx){%>
+                        <img src="<%=val.img_url%>" alt="">
+                        <%}%>
+                 <%})%>
+                    </div>
+                    <button button class='form-btn' type="submit">ADD WORD</button>
+                </form>
+            </div>
+        </section>
+
+    </main>
+    
+        <%- include ('layout/footer.ejs') %>
+
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="js/form.js"></script>
+    <script src="js/nav.js"></script>
+    <!-- <script src="js/app.js"></script> -->
+</body>
+
+</html>

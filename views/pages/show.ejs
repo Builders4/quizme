@@ -1,22 +1,133 @@
-<!-- Aziz -->
-<form action="/add" method="post">
-    <%if(images){ %>
-    <%images.forEach(val =>{%>
-    <img src="<%=val.img_url%>" alt=""><br>
-    <%})%>
-    <%}else{%>
-    <img src="https://pngimage.net/wp-content/uploads/2018/06/no-image-available-png-3.png" alt="">;
-    <%}%>
-    <input type="text" name="<%=word%>" value="<%=word%>"><br>
-    <% newWord.forEach(val =>{ %>
-    <input type="radio" name="definition" id="definition" value="<%=val.definition%>">
-    <label for="definition"><%=val.definition%></label><br>
-    <input type="radio" name="example" id="example" value="<%=val.example%>">
-    <label for="example"><%=val.example%></label><br>
-    <input type="radio" name="synonyms" id="synonyms" value="<%=val.synonyms%>">
-    <label for="synonyms"><%=val.synonyms%></label><br>
-    <% }) %>
-    <input type="text" name="list" placeholder="enter the list"><br>
-    <button type="submit">Add to database</button><br>
-</form>
-<!-- Aziz -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/reset.css">
+    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="stylesheet" href="/styles/cards.css">
+    <link rel="stylesheet" href="/styles/form.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>show</title>
+</head>
+
+<body>
+    <header>
+        <div class="topnav">
+            <div class="nhov">
+
+                <a href="/" class="active">QUIZ<span id="logospan">ME</span></a>
+            </div>
+
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <i class="fa fa-bars"></i>
+            </a>
+            <div id="myLinks">
+                <a href="/">Home</a>
+                <a href="/searches">Search</a>
+                <a href="/showlist">Your list</a>
+
+                <a href="/aboutus">About</a>
+            </div>
+        </div>
+
+        <div class="header">
+
+            <h1>QUIZ<span id="logospan">ME</span></h1>
+
+        </div>
+        <div class="canvas-wrap">
+            <canvas id="canvas"></canvas>
+        </div>
+    </header>
+
+    <main>
+        <% wordToEdit.forEach(val =>{ %>
+        <form id="regForm" action="/updateWord/<%=val.id%>?_method=put" method="post">
+            <h2>UPDATE WORD</h2>
+            <!-- One "tab" for each step in the form: -->
+            <div class="tab">
+                <label for=""> Word:</label>
+
+                <p><input placeholder="Word" oninput="this.className = ''" name="word" value="<%=val.word%>"></p>
+                <label for="">Pronunciation:</label>
+
+                <div>
+                    <audio controls>
+                        <source src="<%=val.audio%>" type="audio/mpeg">
+                    </audio>
+                </div>
+                <p><input placeholder="audio" oninput="this.className = ''" type="hidden" value="<%=val.audio%>"
+                        name="audio"></p>
+            </div>
+            <div class="tab">
+                <label for=""> Definition:
+                    :</label>
+
+                <p><textarea id="textarea-def" placeholder="Definition" type="text" name="definition"
+                        oninput="this.className = ''" cols="30" rows="1"><%=val.definition%></textarea></p>
+                <label for="">Example:</label>
+
+                <p><textarea placeholder="Example" type="text" name="example" oninput="this.className = ''" cols="30"
+                        rows="1"><%=val.example %></textarea></p>
+
+                <label for="">Synonyms:</label>
+
+                <p><textarea placeholder="Synonyms" type="text" name="synonyms" cols="30" rows="1"
+                        oninput="this.className = ''"><%=val.synonyms%></textarea></p>
+            </div>
+            <div class="tab"> <label for="">Imge:</label>
+                <p>
+                    <input placeholder="Image Url" type="url" name="img_url" value="<%=val.img_url%>"
+                        oninput="this.className = ''">
+                </p>
+                <div class="suggested-imgs">
+                    <p>Preview Image</p>
+                    <img src="<%=val.img_url%>" alt="">
+                </div>
+                <label for="">List Name:</label>
+
+
+                <p>
+                    <input placeholder="List Name" type="text" name="list" oninput="this.className = ''"
+                        value="<%=val.list%>">
+                </p>
+                <p>
+                <div class="custom-select" style="width:300px;" id="list-div">
+
+                    <select>
+                        <option>Saved Lists</option>
+                        <% list.forEach(val =>{ %>
+                        <option><%=val.list%></option>
+                        <% }) %>
+                    </select>
+                </div>
+                </p>
+
+            </div>
+            <div style="overflow:auto;">
+                <div style="float:right;">
+                    <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+                    <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+                </div>
+            </div>
+            <!-- Circles which indicates the steps of the form: -->
+            <div style="text-align:center;margin-top:40px;">
+                <span class="step"></span>
+                <span class="step"></span>
+                <span class="step"></span>
+            </div>
+        </form>
+        <% }) %>
+    </main>
+    <%- include ('layout/footer.ejs') %>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="/form2.js"></script>
+    <script src="/nav.js"></script>
+
+</body>
+
+</html>

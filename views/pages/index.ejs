@@ -4,83 +4,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
     <link rel="stylesheet" href="/styles/reset.css">
-    <link rel="stylesheet" href="/styles/style.css">
     <script src="https://kit.fontawesome.com/4041ed350e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/styles/style.css">
+    <title>QuizMe</title>
+    <link rel="icon" href="/imges/quiz.png" type="image/gif">
 
-    
+
 </head>
 
 <body>
-<header>
-    <div class="topnav">
-        <a href="#" class="active">QUIZME</a>
-        <div id="myLinks">
-          <a href="#">Home</a>
-          <a href="#">Contact</a>
-          <a href="#">About</a>
+    <header>
+        <div class="topnav">
+            <div class="nhov">
+            <a href="/" class="active">QUIZ<span id="logospan">ME</span></a>
         </div>
-        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-          <i class="fa fa-bars"></i>
-        </a>
-      </div>
-      
-    <div class="header">
-        <h1>QUIZME</h1>
-        
-      </div>
-      <div class="canvas-wrap">
-        <canvas id="canvas"></canvas>
-      </div>
-      <!-- <div class="content">
-        <h1>Animated waves...</h1>
-      </div> -->
-</header>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <i class="fa fa-bars"></i>
+            </a>
+            <div id="myLinks">
+                <a href="/">Home</a>
+                <a href="/searches">Search</a>
+                <a href="/showlist">Your list</a>
+                
+                <a href="/aboutus">About</a>
+            </div>
+        </div>
 
-    <!-- start for the footer -->
-    <footer class="footer-distributed">
+        <div class="header">
+            
+            <h1>QUIZ<span id="logospan">ME</span></h1>
 
-        <div class="footer-left">
+        </div>
+        <div class="canvas-wrap">
+            <canvas id="canvas"></canvas>
+        </div>
+    </header>
+    
+    <main>
 
-            <h3>QUIZME</h3>
+        <section id="first-section">
+            <p>
 
-            <p class="footer-links">
-                <a href="#">Home</a>
-                ·
-                <a href="#">About-Us</a>
-                ·
-                <a href="#">Contact</a>
+                <em id="emps">
+                    90%
+                </em>
+                of students who use Quiz<span id="logospan">me</span> report higher grades.
             </p>
+        </section>
+        <section id="secand-section">
+            <div id="insecand-section">
+                <div id="insecand-sectiondiv-2">
+                    <h2>
+                        You bring the brains, we’ll bring everything else
+                    </h2>
+                    <p>
+                        From flashcards to help you learn English, to quizez that make it easy to get a handle on
+                        history, use a variety of tools to conquer any challenge.
 
-            <p class="footer-company-name">QUIZME@yahoo.com</p>
-
-            <div class="footer-icons">
-
-                <a href="#"><i class="fa fa-facebook"></i></a>
-                <a href="#"><i class="fa fa-twitter"></i></a>
-                <a href="#"><i class="fa fa-linkedin"></i></a>
-                <a href="#"><i class="fa fa-github"></i></a>
-
+                    </p>
+                </div>
+                <img src="/imges/firstimg2.png" alt="" srcset="">
             </div>
 
-        </div>
+        </section>
 
-        <div class="footer-right">
 
-            <p>Contact Us</p>
+        <section id="third-section">
+            <div id="inthird-section">
+                <img src="/imges/secimg.png" alt="" srcset="">
+                <div id="inthird-sectiondiv-2">
+                    <h2>
+                        Your next win is just
+                        a fact away
+                    </h2>
+                    <p>
+                        From flashcards to help you learn English, to quizez that make it easy to get a handle on
+                        history, use a variety of tools to conquer any challenge.
+                    </p>
+                </div>
+            </div>
+        </section>
+        <section id="forth-section">
+            <div id="inforth-section">
+                <div id="inforth-sectiondiv-2">
+                    <h2>
+                        Empower your students
+                    </h2>
+                    <p>
+                        Help every student confidently learn anything, no matter what they’re striving to achieve. Using
+                        Quizme free study sets, study modes and in-class , you can instantly create a more
+                        engaged classroom.
+                    </p>
+                </div>
+                <img src="/imges/third.png" alt="" srcset="">
+            </div>
 
-            <form action="#" method="post">
+        </section>
+        <section id="forbtnsec">
+            <h2>Ready to start getting better grades?</h2>
+            <a href="/searches"><input type="button" value="Get Started" class="homebtn"></a>
+        </section>
+        <section id="forbtnsec">
+            <h2>Or maybe to start the challenge</h2>
+            <a href="/challenge"><input type="button" value="Challenge" class="homebtn"></a>
+        </section>
 
-                <input type="text" name="email" placeholder="Email">
-                <textarea name="message" placeholder="Message"></textarea>
-                <button>Send</button>
+    </main>
+    <!-- start for the footer -->
+    <%- include ('layout/footer.ejs') %>
 
-            </form>
-
-        </div>
-
-    </footer>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="js/app.js"></script>
 </body>

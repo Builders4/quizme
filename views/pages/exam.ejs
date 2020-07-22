@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Dynamic Quiz Project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/reset.css">
+    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="stylesheet" href="/styles/cards.css">
+    <link rel="stylesheet" href="/styles/quiz.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <!-- allData: data.rows, listName: list -->
+    <%- include ('layout/nav.ejs') %>
+
+
+    <main>
+        <div id='container'>
+            <div id='title'>
+                <h1>Quiz</h1>
+            </div>
+            <br />
+            <div id='quiz'></div>
+            <div class='button' id='next'><a href='#'>Next</a></div>
+            <div class='button' id='prev'><a href='#'>Prev</a></div>
+            <div class='button' id='start'> <a href='#'>Start Over</a></div>
+            <!-- <button class='' id='next'>Next</a></button>
+                <button class='' id='prev'>Prev</a></button>
+                <button class='' id='start'> Start Over</a></button> -->
+        </div>
+    </main>
+    <footer>
+        <%- include ('layout/footer.ejs') %>
+    </footer>
+    <div id="allData" data-test="<%=allData%>"></div>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="/nav.js"></script>
+    <script src="/quiz.js"></script>
+
+</body>
+
+</html>
