@@ -16,6 +16,8 @@ const client = new pg.Client(process.env.DATABASE_URL)
 app.use(methodOverride('_method'));
 app.set('view engine', 'ejs');
 app.use(express.static('./public'));
+app.use(express.static('./public/js'));
+
 // app.use(express.static('./public'));
 
 app.use(express.json());
@@ -51,11 +53,11 @@ function deletWord(req, res) {
     let val = [req.params.id];
     client.query(SQL1, val)
         .then((result) => {
-            console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>',result.rows[0].list);
+            console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>', result.rows[0].list);
             let SQL2 = `DELETE FROM words WHERE id=$1;`
             client.query(SQL2, val)
                 .then(() => {
-                    console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>',result.rows[0].list);
+                    console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>', result.rows[0].list);
                     res.redirect(`/showlist?list=${result.rows[0].list}`);
                 })
         })
@@ -70,17 +72,24 @@ function updateWord(req, res) {
     client.query(SQL, values)
         .then(() => {
             res.redirect(`/showlist?list=${list}`);
-   });
+        });
 }
 
 function formEdit(req, res) {
     let id = req.params.id;
     let SQL = `SELECT * FROM words WHERE id=$1;`;
+    let SQL2 = `SELECT DISTINCT list FROM words`;
+
     let safe = [id];
     client.query(SQL, safe)
         .then(data => {
-            res.render('pages/show', { wordToEdit: data.rows });
-        })
+            client.query(SQL2)
+                .then(data2 => {
+
+                    res.render('pages/show', { wordToEdit: data.rows, list:data2.rows });
+                });
+
+        });
 }
 
 function deleteCard(req, res) {
@@ -88,11 +97,10 @@ function deleteCard(req, res) {
     let val = [req.params.id];
     client.query(SQL1, val)
         .then((result) => {
-            console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>',result.rows[0].list);
-            let SQL2 = `DELETE FROM words WHERE id=$1;`;
+            let SQL2 = `DELETE FROM words WHERE id=$1;`
             client.query(SQL2, val)
                 .then(() => {
-                    console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>',result.rows[0].list);
+                    console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>', result.rows[0].list);
                     res.redirect(`/showlist?list=${result.rows[0].list}`);
                 })
         })
@@ -157,7 +165,7 @@ function sendWords(req, res) {
 function loadApp(req, res) {
     res.status(200).render('pages/index')
 }
-function aboutUS(req,res){
+function aboutUS(req, res) {
     res.status(200).render('pages/aboutus')
 
 }

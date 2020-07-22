@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/styles/reset.css">
     <link rel="stylesheet" href="/styles/style.css">
-    <link rel="stylesheet" href="/styles/form.css">
     <link rel="stylesheet" href="/styles/cards.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/styles/form.css">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>show</title>
 </head>
 
@@ -40,71 +40,77 @@
     </header>
     
     <main>
-        <section class="form-section">
-            <div class="form-div ">
-                <% wordToEdit.forEach(val =>{ %>
-                <form action="/updateWord/<%=val.id%>?_method=put" method="post">
-                    <label for="">
-                        <span>Word</span>
-                        <input placeholder="Word" type="text" name="word" required="" value="<%=val.word%>">
-                    </label>
-                    <label for="">
-                        <span>Pronunciation</span>
-                        <audio controls>
-                            <source src="<%=val.audio%>" type="audio/mpeg">
-                        </audio>
-
-                    </label>
-
-                    <label for="">
-                        <span>Definition</span>
-                        <textarea placeholder="Definition" type="text" name="definition" required="" cols="30"
-                            rows="4"><%=val.definition%></textarea>
-                    </label>
-
-                    <label for="">
-                        <span>Example</span>
-                        <textarea placeholder="Example" type="text" name="example" required="" cols="30"
-                            rows="2"><%=val.example %></textarea>
-                    </label>
-                    <label for="">
-                        <span>Synonyms</span>
-                        <textarea placeholder="Synonyms" type="text" name="synonyms" required="" cols="30"
-                            rows="2"><%=val.synonyms%></textarea>
-                    </label>
-                    <label for="">
-                        <span>List</span>
-                        <input placeholder="List Name" type="text" name="list" value="<%=val.list%>" required="">
-                    </label>
-                    <div class="box-container" id="list-div">
-                        <div class="box">
-                            <select>
-                                <option>Saved Lists</option>
-                                <option><%=val.list%></option>
-
-                            </select>
-                        </div>
-                    </div>
-                    <label for="">
-                        <span>Image Url</span>
-                        <input placeholder="image Url" type="url" name="img_url" value="<%=val.img_url%>" required="">
-                    </label>
-                    <div class="btn-div">
-                        <button class="form-btn update-btn" type="submit">UPDATE</button>
-                    </div>
-                </form>
-                <form action="/deleteWord/<%= val.id %>?_method=delete"  method="post">
-                    <button class="delete-btn form-btn">DELETE</button>
-                </form>
-                <% }) %>
+        <% wordToEdit.forEach(val =>{ %>
+        <form id="regForm" action="/updateWord/<%=val.id%>?_method=put" method="post">
+            <h1>UPDATE WORD</h1>
+            <!-- One "tab" for each step in the form: -->
+            <div class="tab">Word:
+                <p><input placeholder="Word" oninput="this.className = ''" name="word" value="<%=val.word%>"></p>
+                Pronunciation:
+                <div>
+                    <audio controls>
+                        <source src="<%=val.audio%>" type="audio/mpeg">
+                    </audio>
+                </div>
+                <p><input placeholder="audio" oninput="this.className = ''" type="hidden" value="<%=val.audio%>"
+                        name="audio"></p>
             </div>
-        </section>
+            <div class="tab">
+                Definition:
+                <p><textarea id="textarea-def" placeholder="Definition" type="text" name="definition"
+                        oninput="this.className = ''" cols="30" rows="1"><%=val.definition%></textarea></p>
+                Example:
+                <p><textarea placeholder="Example" type="text" name="example" oninput="this.className = ''" cols="30"
+                        rows="1"><%=val.example %></textarea></p>
+                Synonyms:
+                <p><textarea placeholder="Synonyms" type="text" name="synonyms" cols="30" rows="1"
+                        oninput="this.className = ''"><%=val.synonyms%></textarea></p>
+            </div>
+            <div class="tab">Image:
+                <p>
+                    <input placeholder="Image Url" type="url" name="img_url" value="<%=val.img_url%>"
+                        oninput="this.className = ''">
+                </p>
+                <div class="suggested-imgs">
+                    <p>Preview Image</p>
+                    <img src="<%=val.img_url%>" alt="">
+                </div>
+                List Name:
+                <p>
+                    <input placeholder="List Name" type="text" name="list" oninput="this.className = ''" value="<%=val.list%>">
+                </p>
+                <p>
+                <div class="custom-select" style="width:300px;" id="list-div">
+
+                    <select>
+                        <option>Saved Lists</option>
+                        <% list.forEach(val =>{ %>
+                        <option><%=val.list%></option>
+                        <% }) %>
+                    </select>
+                </div>
+                </p>
+
+            </div>
+            <div style="overflow:auto;">
+                <div style="float:right;">
+                    <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+                    <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+                </div>
+            </div>
+            <!-- Circles which indicates the steps of the form: -->
+            <div style="text-align:center;margin-top:40px;">
+                <span class="step"></span>
+                <span class="step"></span>
+                <span class="step"></span>
+            </div>
+        </form>
+        <% }) %>
     </main>
     <%- include ('layout/footer.ejs') %>
 
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="js/form.js"></script>
+    <script src="/form2.js"></script>
 </body>
 
 </html>

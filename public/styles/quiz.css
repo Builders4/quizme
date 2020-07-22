@@ -87,9 +87,9 @@
 
 #container input{
     display: inline-block !important;
-    max-width: 70%;
+    max-width: 80%;
     vertical-align: top;
-        margin-top: 5px;
+        margin-top: 7px;
 }
 #container label {
     display: inline-block !important;
