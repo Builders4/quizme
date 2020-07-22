@@ -4,10 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
     <link rel="stylesheet" href="/styles/reset.css">
     <link rel="stylesheet" href="/styles/style.css">
     <script src="https://kit.fontawesome.com/4041ed350e.js" crossorigin="anonymous"></script>
+    <title>QuizMe</title>
+    <link rel="icon" href="/imges/quiz.png" type="image/gif">
 
 
 </head>
@@ -15,13 +16,15 @@
 <body>
     <header>
         <div class="topnav">
-            <a href="#" class="active">QUIZ<span id="logospan">ME</span></a>
+            <a href="/" class="active">QUIZ<span id="logospan">ME</span></a>
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">
                 <i class="fa fa-bars"></i>
             </a>
             <div id="myLinks">
-                <a href="#">Home</a>
-                <a href="#">Contact</a>
+                <a href="/">Home</a>
+                <a href="/searches">Search</a>
+                <a href="/showlist">Your list</a>
+                
                 <a href="/aboutus">About</a>
             </div>
         </div>
@@ -34,10 +37,8 @@
         <div class="canvas-wrap">
             <canvas id="canvas"></canvas>
         </div>
-        <!-- <div class="content">
-            <h1>Animated waves...</h1>
-          </div> -->
     </header>
+    
     <main>
 
         <section id="first-section">
@@ -61,7 +62,7 @@
 
                     </p>
                 </div>
-                <img src="/imges/firstimg.png" alt="" srcset="">
+                <img src="/imges/firstimg2.png" alt="" srcset="">
             </div>
 
         </section>
@@ -103,8 +104,8 @@
             <a href="/searches"><input type="button" value="Get Started" class="homebtn"></a>
         </section>
         <section id="forbtnsec">
-            <h2>or maybe to start the challenge</h2>
-            <a href="/challenge"><input type="button" value="challenge" class="homebtn"></a>
+            <h2>Or maybe to start the challenge</h2>
+            <a href="/challenge"><input type="button" value="Challenge" class="homebtn"></a>
         </section>
 
     </main>

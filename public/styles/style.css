@@ -8,6 +8,12 @@
 
 body{
     background-color: #fafafa;
+    font-family: 'Boogaloo', cursive !important;
+
+}
+select ,textarea,button{
+  font-family: 'Boogaloo', cursive ;
+
 }
 h1 {
     /* font-family: 'Lobster',Arial, Helvetica, sans-serif; */
@@ -77,7 +83,7 @@ footer{
 
 
 .canvas-wrap {
-  max-width: 100%;
+  width: 100%;
   overflow: hidden;
   position: absolute;
   transform: translateY(-50%);
@@ -95,7 +101,7 @@ canvas {
     position: fixed;
     /* background-color: #004a7c; */
     background-image: linear-gradient(306deg, rgba(54, 54, 54, 0.05) 0%, rgba(54, 54, 54, 0.05) 33.333%,rgba(85, 85, 85, 0.05) 33.333%, rgba(85, 85, 85, 0.05) 66.666%,rgba(255, 255, 255, 0.05) 66.666%, rgba(255, 255, 255, 0.05) 99.999%),linear-gradient(353deg, rgba(81, 81, 81, 0.05) 0%, rgba(81, 81, 81, 0.05) 33.333%,rgba(238, 238, 238, 0.05) 33.333%, rgba(238, 238, 238, 0.05) 66.666%,rgba(32, 32, 32, 0.05) 66.666%, rgba(32, 32, 32, 0.05) 99.999%),linear-gradient(140deg, rgba(192, 192, 192, 0.05) 0%, rgba(192, 192, 192, 0.05) 33.333%,rgba(109, 109, 109, 0.05) 33.333%, rgba(109, 109, 109, 0.05) 66.666%,rgba(30, 30, 30, 0.05) 66.666%, rgba(30, 30, 30, 0.05) 99.999%),linear-gradient(189deg, rgba(77, 77, 77, 0.05) 0%, rgba(77, 77, 77, 0.05) 33.333%,rgba(55, 55, 55, 0.05) 33.333%, rgba(55, 55, 55, 0.05) 66.666%,rgba(145, 145, 145, 0.05) 66.666%, rgba(145, 145, 145, 0.05) 99.999%),linear-gradient(90deg, rgb(9, 201, 186),rgb(0,86,145));-moz-transform: rotateY(180deg) translateZ(75px);
-    transition: 1.5s;
+    transition: 13.5s;
     overflow: hidden;
     width: 100%;
     z-index: 99999999;
@@ -111,7 +117,7 @@ canvas {
     color: white;
     padding: 22.5px 16px;
     text-decoration: none;
-    font-size: 17px;
+    font-size: 22px;
   }
     
     .sticky a:hover {
@@ -139,7 +145,8 @@ canvas {
     color: white;
     padding: 22.5px 16px;
     text-decoration: none;
-    font-size: 17px;
+    font-size: 22px;
+
   }
   
   .topnav a.icon {
@@ -161,6 +168,7 @@ canvas {
 
 /* first section 90% */
 #first-section{
+    color: #000000de;
     font-size: 2rem;
     text-align: center;
     font-family: 'Boogaloo', cursive ;
@@ -171,8 +179,11 @@ canvas {
 
 }
 #secand-section{
-  width: 70%;
+  width: 75%;
   margin: auto auto;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding: 20px 30px;
+
 }
 /* end first-section */
 #insecand-section{
@@ -201,7 +212,7 @@ canvas {
 }
 
 #insecand-section img{
-  width: 470px;
+  width: 550px;
   height:  480px;
   
 }
@@ -212,8 +223,12 @@ canvas {
 /* 3ed section */
 
 #third-section{
-  width: 70%;
+  width: 75%;
   margin: auto auto;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding:20px 30px;
+  
+
 }
 #third-section{
 margin-top: 140px;
@@ -242,7 +257,10 @@ margin-top: 140px;
   font-weight: 100;
   font-weight: lighter;
 }
-
+#inthird-section img {
+  width: 550px;
+  height: 480px;
+}
 /* end3ed */
 /* footer */
 .footer-distributed{
@@ -251,7 +269,7 @@ margin-top: 140px;
     /* background-color: #005691; */
     margin-top: 112px;
     background-image: linear-gradient(306deg, rgba(54, 54, 54, 0.05) 0%, rgba(54, 54, 54, 0.05) 33.333%,rgba(85, 85, 85, 0.05) 33.333%, rgba(85, 85, 85, 0.05) 66.666%,rgba(255, 255, 255, 0.05) 66.666%, rgba(255, 255, 255, 0.05) 99.999%),linear-gradient(353deg, rgba(81, 81, 81, 0.05) 0%, rgba(81, 81, 81, 0.05) 33.333%,rgba(238, 238, 238, 0.05) 33.333%, rgba(238, 238, 238, 0.05) 66.666%,rgba(32, 32, 32, 0.05) 66.666%, rgba(32, 32, 32, 0.05) 99.999%),linear-gradient(140deg, rgba(192, 192, 192, 0.05) 0%, rgba(192, 192, 192, 0.05) 33.333%,rgba(109, 109, 109, 0.05) 33.333%, rgba(109, 109, 109, 0.05) 66.666%,rgba(30, 30, 30, 0.05) 66.666%, rgba(30, 30, 30, 0.05) 99.999%),linear-gradient(189deg, rgba(77, 77, 77, 0.05) 0%, rgba(77, 77, 77, 0.05) 33.333%,rgba(55, 55, 55, 0.05) 33.333%, rgba(55, 55, 55, 0.05) 66.666%,rgba(145, 145, 145, 0.05) 66.666%, rgba(145, 145, 145, 0.05) 99.999%),linear-gradient(90deg, rgb(9, 201, 186),rgb(0,86,145));-moz-transform: rotateY(180deg) translateZ(75px);
-    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
 	box-sizing: border-box;
 	width: 100%;
 	font: bold 16px sans-serif;
@@ -277,7 +295,7 @@ margin-top: 140px;
 
 /* section#4 */
 #forth-section{
-  
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   width: 95%;
   margin: 100px auto;
 }
@@ -318,15 +336,18 @@ margin-top: 140px;
 /* Btn section */
 #forbtnsec{
   text-align: center;
+
 }
 #forbtnsec h2{
   font-size: 41px;
   color:#455358;
   font-weight: 600;
-  margin-bottom: 40px;
+  margin: 40px 0;
 
 }
 .homebtn{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: 280px;;
   background-color: #3ccfcf;
   padding: 30px 40px ;
   border: 0px ;
@@ -335,12 +356,27 @@ margin-top: 140px;
   color:#fafafa;
 }
 #forbtnsec .homebtn:hover{
-  color:#455358;
+  /* color:#455358; */
   
-  background-color: gold;
+  background-image: linear-gradient(306deg, rgba(54, 54, 54, 0.05) 0%, rgba(54, 54, 54, 0.05) 33.333%,rgba(85, 85, 85, 0.05) 33.333%, rgba(85, 85, 85, 0.05) 66.666%,rgba(255, 255, 255, 0.05) 66.666%, rgba(255, 255, 255, 0.05) 99.999%),linear-gradient(353deg, rgba(81, 81, 81, 13.05) 0%, rgba(81, 81, 81, 0.05) 33.333%,rgba(238, 238, 238, 0.05) 33.333%, rgba(238, 238, 238, 0.05) 66.666%,rgba(32, 32, 32, 0.05) 66.666%, rgba(32, 32, 32, 0.05) 99.999%),linear-gradient(140deg, rgba(192, 192, 192, 0.05) 0%, rgba(192, 192, 192, 0.05) 33.333%,rgba(109, 109, 109, 0.05) 33.333%, rgba(109, 109, 109, 0.05) 66.666%,rgba(30, 30, 30, 0.05) 66.666%, rgba(30, 30, 30, 0.05) 99.999%),linear-gradient(189deg, rgba(77, 77, 77, 0.05) 0%, rgba(77, 77, 77, 0.05) 33.333%,rgba(55, 55, 55, 0.05) 33.333%, rgba(55, 55, 55, 0.05) 66.666%,rgba(145, 145, 145, 0.05) 66.666%, rgba(145, 145, 145, 0.05) 99.999%),linear-gradient(90deg, rgb(9, 201, 186),rgb(78, 52, 141));
+
+
+
 }
-/* end btn */
+  
+  
+  
+  
+  
+  
+  
+  /* end btn */ */
 /* Footer left */
+
+.footer-distributed .footer-left{
+	float: left;
+}
+
 
 .footer-distributed .footer-left{
 	float: left;
